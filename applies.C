@@ -1,4 +1,5 @@
-// std::apply
+// std::apply(f,t) : Invoke the Callable object f with the elements of t, a tuple, as arguments. 
+// Returns : The value returned by f
 //
 list lst01 {1,2,3,4,5,6,7,8,9,10};
 list lst02 {"Mater","Kate","Ann","Schnikellisl"};
@@ -22,7 +23,7 @@ void applies()
    cout << apply(add_generic<float>, make_tuple(2.0f, 3.0f)) << endl;
    cout << apply(add_lambda, make_tuple(5.0f, 7.0f)) << endl;
    cout << apply(add_lambda3, make_tuple(11.0f, 13.0f, 17.0f)) << endl;
-   cout << lstlsts(lst01,lst02);
-   //cout << apply(lstlsts, make_tuple(lst01,lst02)) << endl;
+	//lstlsts(lst01,lst02); // outputs to console
+   apply(lstlsts, make_tuple(lst01,lst02)); // outputs to console
 }
 
