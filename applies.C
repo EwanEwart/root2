@@ -15,6 +15,44 @@ auto add_lambda3 = [](auto first, auto second, auto third) { return first + seco
 auto lstalst = [](auto const& lst){for(auto const& i:lst)cout<<i<<' ';cout<<endl;};
 auto lstlsts = [](auto const& lst1, auto const& lst2){lstalst(lst1);lstalst(lst2);};
 
+// inserter
+//
+/*
+template<typename Ts>
+ostream& operator<<(ostream& os, tuple<Ts...>const& theTuple)
+{
+   apply
+   (
+      [&os](Ts const& TupleArgs... )
+      {
+         os<<'[';
+         size_t n{0};
+         ((os << tupleArgs << (++n != sizeof...(Ts) ? ", " : "")), ...);
+         os<<']';
+      }
+   ,  theTuple
+   );
+   return os;
+}
+*/
+
+template<typename... Ts>
+std::ostream& operator<<(std::ostream& os, std::tuple<Ts...> const& theTuple)
+{
+    std::apply
+    (
+        [&os](Ts const&... tupleArgs)
+        {
+            os << '[';
+            std::size_t n{0};
+            ((os << tupleArgs << (++n != sizeof...(Ts) ? ", " : "")), ...);
+            os << ']';
+        }, theTuple
+    );
+    return os;
+}
+ 
+
 // test bed
 //
 void applies() 
@@ -25,5 +63,11 @@ void applies()
    cout << apply(add_lambda3, make_tuple(11.0f, 13.0f, 17.0f)) << endl;
 	//lstlsts(lst01,lst02); // outputs to console
    apply(lstlsts, make_tuple(lst01,lst02)); // outputs to console
+
+   // << tuple
+   // auto db_record {make_tuple(1,"Rachel", "Ewart", 91154, 2.347f, M_PI)};
+   // cout << db_record;
+   tuple myTuple{25, "Hello", 9.31f, 'c'};
+   cout << myTuple << '\n';
 }
 
