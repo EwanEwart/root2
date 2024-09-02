@@ -1,6 +1,8 @@
 {
     "files.associations": {
+        "*.go": "go",
         ".fantomasignore": "ignore",
-        "applies.C": "cpp"
+        "applies.C": "cpp",
+        "demangles.C": "cpp"
     }
 }
