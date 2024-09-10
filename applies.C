@@ -15,43 +15,48 @@ auto add_lambda3 = [](auto first, auto second, auto third) { return first + seco
 auto lstalst = [](auto const& lst){for(auto const& i:lst)cout<<i<<' ';cout<<endl;};
 auto lstlsts = [](auto const& lst1, auto const& lst2){lstalst(lst1);lstalst(lst2);};
 
-// inserter
+// pass tuple holding different types to inserter
 //
-/*
-template<typename Ts>
+template<typename... Ts>
 ostream& operator<<(ostream& os, tuple<Ts...>const& theTuple)
 {
    apply
    (
-      [&os](Ts const& TupleArgs... )
+      [&os](Ts const&... tupleArgs)
       {
          os<<'[';
          size_t n{0};
-         ((os << tupleArgs << (++n != sizeof...(Ts) ? ", " : "")), ...);
+			// fold expression; refer to https://en.cppreference.com/w/cpp/language/fold
+			// ( parameter_pack operator ... ) <- unary right fold
+			// ( expression , ... )
+         ((os << tupleArgs << (++n != sizeof...(Ts) ? ", " : ""))   ,   ... ); // comma operator !
          os<<']';
       }
    ,  theTuple
    );
    return os;
 }
-*/
 
-template<typename... Ts>
-std::ostream& operator<<(std::ostream& os, std::tuple<Ts...> const& theTuple)
+// fold examples
+//
+
+// Basic usage, folding variadic arguments over "operator<<"
+template<typename... Args>
+void printer(Args&&... args)
 {
-    std::apply
-    (
-        [&os](Ts const&... tupleArgs)
-        {
-            os << '[';
-            std::size_t n{0};
-            ((os << tupleArgs << (++n != sizeof...(Ts) ? ", " : "")), ...);
-            os << ']';
-        }, theTuple
-    );
-    return os;
+    (cout << ... << args) << endl; // binary left fold : (init op ... op pp)
 }
- 
+
+// Folding an expression that uses the parameter pack directly over "operator,"
+// Call, e.g. : print_limits < int, unsigned, char et cetera > ()
+template<typename... Ts>
+void print_limits() // print the maximum of a type
+{
+   size_t n{0};
+	//          v--- make,e.g. char, numerical
+   ( ( cout << + numeric_limits<Ts>::max() << (++n != sizeof...(Ts)?" /  ":"") )   ,   ... ) // urf : ( pp op ...)  comma operator
+	<< endl;
+}
 
 // test bed
 //
@@ -65,9 +70,15 @@ void applies()
    apply(lstlsts, make_tuple(lst01,lst02)); // outputs to console
 
    // << tuple
-   // auto db_record {make_tuple(1,"Rachel", "Ewart", 91154, 2.347f, M_PI)};
-   // cout << db_record;
+   auto db_record {make_tuple(1,"Rachel", "Ewart", 91154, 2.347f,M_E, M_PI,'a','b','c',false,1E3)};
+   cout << db_record<<endl;
    tuple myTuple{25, "Hello", 9.31f, 'c'};
    cout << myTuple << '\n';
+
+	// binary left fold : (initial op ... op pp)
+	printer("printer(...) => ",'A',1,' ',"B1",' ',"Pi = ",M_PI);
+	//
+	print_limits<char, unsigned, uint8_t, uint16_t, uint32_t>();
+
 }
 
