@@ -2,6 +2,9 @@
 $ xhost +si:localuser:<name>
 
 
+# Unmangle C++
++c++filt *mangled type*
+
 # github automation
 git config --global credential.helper manager
 
