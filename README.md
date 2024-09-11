@@ -20,3 +20,8 @@ Uninstall
 
 git-credential-manager unconfigure
 sudo dpkg -r gcm
+
+## github automation gcm post installation
+git config --global credential.credentialStore cache
+
+
