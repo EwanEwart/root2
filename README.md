@@ -1,7 +1,4 @@
-# ROOT
-
-## access
-# replace name
+# ROOT access: replace name
 $ xhost +si:localuser:<name>
 
 ## github automation
