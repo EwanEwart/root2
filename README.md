@@ -1,7 +1,7 @@
 # ROOT access: replace name
 $ xhost +si:localuser:<name>
 
-## github automation
+# github automation
 git config --global credential.helper manager
 
 ## GCM - git credential manager
@@ -14,12 +14,11 @@ and *run* the following:
 sudo dpkg -i <path-to-package>
 git-credential-manager configure
 
-#### Uninstall GCM
+### Uninstall GCM
 
 git-credential-manager unconfigure
 sudo dpkg -r gcm
 
-## github automation gcm-post-installation
+### github automation gcm-post-installation
 git config --global credential.credentialStore cache
-
 
