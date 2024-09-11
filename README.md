@@ -1,7 +1,8 @@
 # ROOT
 
 ## access
-xhost +si:localuser:name
+# replace name
+xhost +si:localuser:<name>
 
 ## github automation
 git config --global credential.helper manager
