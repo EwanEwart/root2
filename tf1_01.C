@@ -13,7 +13,11 @@ void tf1_01()
    )
    };
    fa1->Draw();
+<<<<<<< HEAD
 }	
+=======
+}
+>>>>>>> origin/HEAD
 /*
 F1 constructor using a formula definition.
 
