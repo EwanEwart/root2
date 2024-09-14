@@ -9,8 +9,8 @@ void tf1_01()
          , "sin(x)/x"   // char const *   formula
          , 0            // Double_t       xmin = 0
          , 10           // Double_t       xmax = 1
-                     // EAddToList     addToGlobList = EAddToList::kDefault
-                     // bool           vectorize = false
+                        // EAddToList     addToGlobList = EAddToList::kDefault
+                        // bool           vectorize = false
       )
    };
    fa1->Draw();
