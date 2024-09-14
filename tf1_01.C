@@ -1,16 +1,17 @@
 // TF1, TFormula
 void tf1_01()
 {
-   auto fa1 {
-   new TF1
-   (
-        "fa1"        // char const *   name
-      , "sin(x)/x"   // char const *   formula
-      , 0            // Double_t       xmin = 0
-      , 10           // Double_t       xmax = 1
+   auto fa1
+   {
+      new TF1
+      (
+           "fa1"        // char const *   name
+         , "sin(x)/x"   // char const *   formula
+         , 0            // Double_t       xmin = 0
+         , 10           // Double_t       xmax = 1
                      // EAddToList     addToGlobList = EAddToList::kDefault
                      // bool           vectorize = false
-   )
+      )
    };
    fa1->Draw();
 }
