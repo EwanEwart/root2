@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <memory>
+
 using namespace std;
 /*
 1. Command Interface via Abstract Class
@@ -75,12 +77,18 @@ class ComplexCommand : public Command
 {
 private:
    // worker
-   Receiver * receiver_;
+   shared_ptr<Receiver> receiver_;
    // context data
    string pay_load_1_;
    string pay_load_2_;
 public:
-   explicit ComplexCommand(Receiver * receiver, string pay_load_1, string pay_load_2)
+   // ComplexCommand() = delete;
+   ComplexCommand
+   (
+        shared_ptr<Receiver>const& receiver
+      , string const& pay_load_1
+      , string const& pay_load_2
+   )
    : receiver_(receiver)
    , pay_load_1_(pay_load_1)
    , pay_load_2_(pay_load_2)
@@ -105,21 +113,15 @@ ensuring that the sender remains decoupled from the receiver.
 class Invoker 
 {
 private:
-   Command * on_start_;
-   Command * on_finish_;
+   shared_ptr<Command> on_start_;
+   shared_ptr<Command> on_finish_;
 public:
-   ~Invoker()
-   {
-      cout<<"deleted command on_start"<<endl;
-      delete on_start_;
-      cout<<"deleted command on_finish"<<endl;
-      delete on_finish_;
-   }
-   void SetOnStart(Command * command)
+   ~Invoker() { }
+   void SetOnStart(shared_ptr<Command> command)
    {
       this->on_start_ = command;
    }
-   void SetOnFinish(Command * command)
+   void SetOnFinish(shared_ptr<Command> command)
    {
       this->on_finish_ = command;
    }
@@ -140,25 +142,20 @@ public:
 };
 
 // int design_pattern_command(int const ac, char * const av[])
-// int design_pattern_command()
-int main(int const ac, char * const av[])
+int design_pattern_command()
+// int main(int const ac, char * const av[])
 {
    // resource allocation
-   Invoker  * invoker  = new Invoker;
-   Receiver * receiver = new Receiver;
+   auto invoker  { make_shared<Invoker>()  };
+   auto receiver { make_shared<Receiver>() };
 
    // invoker initialisation
-   invoker->SetOnStart(new SimpleCommand("pay_load : Welcome to the Command Design Pattern !"));
-   invoker->SetOnFinish(new ComplexCommand(receiver,"receiver pay_load 1","receiver pay_load 2"));
+   invoker->SetOnStart(make_shared<SimpleCommand>("pay_load : Welcome to the Command Design Pattern !"));
+   invoker->SetOnFinish(make_shared<ComplexCommand>(receiver,"receiver pay_load 1","receiver pay_load 2"));
 
    // 
    invoker->DoSomethingImportant();
 
-   delete invoker;
-   cout << "deleted invoker"<<endl;
-   delete receiver;
-   cout << "deleted receiver"<<endl;
-   
    return 0;
 }
 
