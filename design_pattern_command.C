@@ -140,8 +140,8 @@ public:
 };
 
 // int design_pattern_command(int const ac, char * const av[])
-// int design_pattern_command()
-int main(int const ac, char * const av[])
+int design_pattern_command()
+// int main(int const ac, char * const av[])
 {
    // resource allocation
    Invoker  * invoker  = new Invoker;

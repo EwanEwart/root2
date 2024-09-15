@@ -142,7 +142,7 @@ public:
 };
 
 // int design_pattern_command(int const ac, char * const av[])
-int design_pattern_command()
+int design_pattern_command_shared_ptr()
 // int main(int const ac, char * const av[])
 {
    // resource allocation
