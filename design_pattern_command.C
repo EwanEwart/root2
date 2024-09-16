@@ -11,8 +11,7 @@ It ensures that all commands have a method to perform their actions.
 */
 class Command {
 public:
-   virtual ~Command() {
-   } 
+   virtual ~Command() { } 
    virtual void Execute() const = 0;
 };
 /*
