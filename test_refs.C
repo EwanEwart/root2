@@ -42,8 +42,25 @@ void test_refs()
 
     s5=s3; // error: object of type 'C1' cannot be assigned because its copy assignment operator is implicitly deleted
     // now implemented above
+
+    string strrsc6 {"strrsc6"};
+    C1 s6{strrsc6, 66};
+    // C1 s1{"s1", 44};
+    cout << "s1 : " << s1.get_s1() << " / " << s1.get_i1() << endl;
+
+    C1& r5 {s5};
+    C1& r6 {s6};
+    cout << "r5 : " << r5.get_s1() << " / " << r5.get_i1() << endl;
+    cout << "r6 : " << r6.get_s1() << " / " << r6.get_i1() << endl;
+
+    r5=r6;
+    cout << "r5 : " << r5.get_s1() << " / " << r5.get_i1() << endl;
+    cout << "r6 : " << r6.get_s1() << " / " << r6.get_i1() << endl;
+    cout << "s5 : " << s5.get_s1() << " / " << s5.get_i1() << endl;
+    cout << "s6 : " << s6.get_s1() << " / " << s6.get_i1() << endl;
     
     if(s1==s2) cout<<"s1==s2"<<endl; else cout<<"s1!=s2"<<endl;
-    if(s1==s3) cout<<"s1==s3"<<endl; else cout<<"s1!=s3"<<endl;
+    if(s2==s3) cout<<"s2==s3"<<endl; else cout<<"s2!=s3"<<endl;
     if(s3==s5) cout<<"s3==s5"<<endl; else cout<<"s3!=s5"<<endl;
+    if(r6==r5) cout<<"r6==r5"<<endl; else cout<<"r6!=r5"<<endl;
 }

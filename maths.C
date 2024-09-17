@@ -16,9 +16,12 @@ auto no_of_pages_and_jobs
       }
    }
 };
+auto fahrenheit_to_centigrade(double f) { return (f-32)*5/9; }
+auto centigrade_to_fahrenheit(double c) { return c*9/5+32; }
 
 void maths()
 {
    cout<<"no_of_pages_and_jobs(int no_of_jobs, int jobs_per_page=15)"<<endl;
+   cout<<"fahrenheit_to_centigrade(double fahrenheit)"<<endl;
+   cout<<"centigrade_to_fahrenheit(double centigrade)"<<endl;
 }
-
