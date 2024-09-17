@@ -33,3 +33,7 @@
 
 # vi
 *.swp
+
+.fake
+
+.vscode/
