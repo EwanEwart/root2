@@ -124,8 +124,8 @@ public:
    void executeCommand() { command_.Execute(); }
 };
 
-int design_pattern_command_2()
-// int main(int argc, char const *argv[])
+// int design_pattern_command_2()
+int main(int argc, char const *argv[])
 {
    Receiver receiver{"Launch Rocket"};
    ConcreteCommand concreteCommand{receiver};
