@@ -26,6 +26,8 @@ to perform their actions.
 class Command
 {
 public:
+   Command& operator=(Command &) = default; // to prevent slicing
+   // Command(const Command&) = default; // to prevent slicing
    virtual ~Command() {}
    virtual void Execute() const = 0;
 };
@@ -51,14 +53,6 @@ public:
       cout << "Receiver: " << payload_ << " ..." << endl;
    }
 };
-class Receiver2
-{
-public:
-   void perform_action()
-   {
-      cout << "Receiver: Land rocket ..." << endl;
-   }
-};
 
 /*
 3. Concrete Command
@@ -74,10 +68,11 @@ to turn on lights, open files, or send messages.
 */
 class ConcreteCommand : public Command
 {
-private:
    Receiver &receiver_;
 
 public:
+   ConcreteCommand& operator=(ConcreteCommand &) = default; // to prevent slicing
+   ConcreteCommand(const ConcreteCommand&) = default; // to prevent slicing
    /*
    The ConcreteCommand
    takes a reference to a Receiver */
@@ -102,39 +97,56 @@ It holds references to the commands and can execute them.
 It acts as an intermediary between the sender (client) and the receiver,
 ensuring that the sender remains decoupled from the receiver.
 */
+
+#define invoker_pointer_cmd
+#undef invoker_pointer_cmd
+
+#ifdef invoker_pointer_cmd
+// ptr command
 class Invoker
 {
-private:
+   Command *command_;
+
+public:
+   void setCommand(Command *cmd) { command_ = cmd; }
+   void executeCommand() { command_->Execute(); }
+};
+#else
+// ref command
+class Invoker
+{
    Command &command_;
 
 public:
    Invoker(Command &cmd) : command_{cmd} {}
-   /*
-   The setCommand method
-   allows setting the command
-   to be executed.
-   */
-   void setCommand(Command &cmd)
-   {
-      command_ = cmd;
-   }
-
-   // The executeCommand method triggers the execution of
-   // the command.
+   void setCommand(Command &cmd) { command_ = cmd; }
    void executeCommand() { command_.Execute(); }
 };
+#endif
 
-// int design_pattern_command_2()
-int main(int argc, char const *argv[])
+
+
+// int design_pattern_command_2() // ROOT
+int main(int argc, char const *argv[]) // code_insiders
 {
-   Receiver receiver{"Launch Rocket"};
-   ConcreteCommand concreteCommand{receiver};
-   Invoker invoker{concreteCommand};
+   Receiver receiver1{"Launch Rocket"};
+   ConcreteCommand concreteCommand{receiver1};
+#ifdef invoker_pointer_cmd
+   Invoker invoker{};                    // ptr
+   invoker.setCommand(&concreteCommand); // ptr
+#else
+   Invoker invoker{concreteCommand};           // ref
+   invoker.setCommand(concreteCommand);        // ref
+#endif
    invoker.executeCommand();
 
-   Receiver receiver2{"Land Rocket"};
+   Receiver receiver2{"Land Rocket"}; // another pay-load
    ConcreteCommand concreteCommand2{receiver2};
-   invoker.setCommand(concreteCommand2);
+#ifdef invoker_pointer_cmd
+   invoker.setCommand(&concreteCommand2); // ptr / reuse invoker
+#else
+   invoker.setCommand(concreteCommand2); // ref
+#endif
    invoker.executeCommand();
 
    return 0;
