@@ -26,7 +26,7 @@ to perform their actions.
 class Command
 {
 public:
-   Command& operator=(Command &) = default; // to prevent slicing
+   // Command& operator=(Command &) = default; // to prevent slicing
    // Command(const Command&) = default; // to prevent slicing
    virtual ~Command() {}
    virtual void Execute() const = 0;
@@ -71,8 +71,8 @@ class ConcreteCommand : public Command
    Receiver &receiver_;
 
 public:
-   ConcreteCommand& operator=(ConcreteCommand &) = default; // to prevent slicing
-   ConcreteCommand(const ConcreteCommand&) = default; // to prevent slicing
+   // ConcreteCommand& operator=(ConcreteCommand &) = default; // to prevent slicing
+   // ConcreteCommand(const ConcreteCommand&) = default; // to prevent slicing
    /*
    The ConcreteCommand
    takes a reference to a Receiver */
@@ -119,7 +119,7 @@ class Invoker
 
 public:
    Invoker(Command &cmd) : command_{cmd} {}
-   void setCommand(Command &cmd) { command_ = cmd; }
+   void setCommand(Command const &cmd) { command_ = cmd; }
    void executeCommand() { command_.Execute(); }
 };
 #endif
@@ -136,7 +136,6 @@ int main(int argc, char const *argv[]) // code_insiders
    invoker.setCommand(&concreteCommand); // ptr
 #else
    Invoker invoker{concreteCommand};           // ref
-   invoker.setCommand(concreteCommand);        // ref
 #endif
    invoker.executeCommand();
 
