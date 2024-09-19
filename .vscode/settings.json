@@ -1,7 +1,8 @@
 {
     "files.associations": {
-        ".fantomasignore": "ignore",
         "*.go": "go",
-        "*.C":"cpp"
+        ".fantomasignore": "ignore",
+        "*.C": "cpp",
+        "array": "cpp"
     }
 }
