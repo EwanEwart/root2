@@ -1,13 +1,13 @@
-#include <functional> // for reference_wrapper
 #include <iostream>
 #include <string_view>
 #include <vector>
+#include <functional> // for reference_wrapper
 
 using namespace std;
 
 /*
-use std::reference_wrapper, 
-which is a class that mimics an reassignable reference:
+use a reference_wrapper type/class, 
+that mimics an reassignable reference
 */
 class Base
 {
@@ -16,7 +16,7 @@ protected:
 
 public:
     Base(int value)
-        : m_value{ value }
+    : m_value{ value }
     {
     }
     virtual ~Base() = default;
@@ -29,16 +29,17 @@ class Derived : public Base
 {
 public:
     Derived(int value)
-        : Base{ value }
+    : Base{ value }
     {
     }
 
     string_view getName() const override { return "Derived"; }
 };
 
-int main()
+int ref_04()
 {
-	vector<reference_wrapper<Base>> v{}; // a vector of reassignable references to Base
+   // a vector of reassignable references to Base
+	vector<reference_wrapper<Base>> v{};
 
 	Base b{ 5 }; // b and d can't be anonymous objects
 	Derived d{ 6 };
@@ -46,10 +47,20 @@ int main()
 	v.push_back(b); // add a Base object to our vector
 	v.push_back(d); // add a Derived object to our vector
 
-	// Print out all of the elements in our vector
-	// we use .get() to get our element out of the reference_wrapper
-	for (const auto& element : v) // element has type const reference_wrapper<Base>&
-		cout << "I am a " << element.get().getName() << " with value " << element.get().getValue() << '\n';
+	// Print all of the elements of the vector
+	// use the .get() method to retrieve the element of the reference_wrapper
+
+   // an element has the type reference_wrapper<Base> const&
+	for (auto const & element : v)
+   {
+		cout
+      << "I am of type "
+      << element.get().getName()
+      << " holding value "
+      << element.get().getValue()
+      << endl
+      ;
+   }
 
 	return 0;
 }

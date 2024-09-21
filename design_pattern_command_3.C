@@ -1,4 +1,21 @@
+/*
+reference only command pattern version
+ref concept:
+root [0] string ln {"Ewart"}
+(std::string &) "Ewart"
+root [1] string fn {"Rachel"}
+(std::string &) "Rachel"
+root [2] vector<reference_wrapper<string>> v1 {}
+(std::vector<std::reference_wrapper<std::string> > &) {}
+root [3] v1.push_back(fn)
+root [4] v1.push_back(ln)
+root [5] for(auto const& i:v1)cout<<i.get()<<'\n';cout<<endl;
+Rachel
+Ewart
+*/
+
 #include <iostream>
+
 using namespace std;
 
 /*
@@ -97,30 +114,14 @@ It holds references to the commands and can execute them.
 It acts as an intermediary between the sender (client) and the receiver,
 ensuring that the sender remains decoupled from the receiver.
 */
-
-#define invoker_pointer_cmd
-#undef invoker_pointer_cmd
-
-#ifdef invoker_pointer_cmd
-// ptr command
 class Invoker
 {
-   Command *command_;
+   reference_wrapper<Command> command_;
 
 public:
-   void setCommand(Command *cmd) { command_ = cmd; }
-   void executeCommand() { command_->Execute(); }
-};
-#else
-// ref command
-class Invoker
-{
-   Command &command_;
+   Invoker(reference_wrapper<Command> cmd) : command_{cmd} {}
 
-public:
-   Invoker(Command &cmd) : command_{cmd} {}
-
-   void setCommand(Command const &cmd) { command_ = cmd; } // design flaw
+   void setCommand(reference_wrapper<Command> cmd) { command_ = cmd; } // design flaw
    /*
    vector<Base&> v{}; won't compile
    vector<string&> won't compile either
@@ -128,32 +129,21 @@ public:
    whereas references can’t be reassigned, but only initialised
    One Solution: pointers
    */
-   void executeCommand() { command_.Execute(); }
+   void executeCommand() { command_.get().Execute(); }
 };
-#endif
 
-
-
-int design_pattern_command_2() // ROOT
-// int main(int argc, char const *argv[]) // code_insiders
+int design_pattern_command_3() // ROOT macro
+// int main(int argc, char const *argv[]) // c++ compiler
 {
+   /* ref version w/o pointers */
    Receiver receiver1{"Launch Rocket"};
    ConcreteCommand concreteCommand{receiver1};
-#ifdef invoker_pointer_cmd
-   Invoker invoker{};                    // ptr
-   invoker.setCommand(&concreteCommand); // ptr
-#else
-   Invoker invoker{concreteCommand};           // ref
-#endif
+   Invoker invoker{concreteCommand}; // ctor; arg == ref cmd
    invoker.executeCommand();
 
    Receiver receiver2{"Land Rocket"}; // another pay-load
    ConcreteCommand concreteCommand2{receiver2};
-#ifdef invoker_pointer_cmd
-   invoker.setCommand(&concreteCommand2); // ptr / reuse invoker
-#else
-   invoker.setCommand(concreteCommand2); // ref
-#endif
+   invoker.setCommand(concreteCommand2); // method; arg == ref cmd
    invoker.executeCommand();
 
    return 0;

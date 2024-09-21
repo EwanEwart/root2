@@ -37,7 +37,7 @@ void ref_03()
 
     Base base{ derived }; // what happens here? will be sliced
     
-    cout << "base is a " << base.getName() << " and has value " << base.getValue() << '\n';
+    cout << "base is of type " << base.getName() << " (sliced) and has value " << base.getValue() << endl;
 }
 
 /*
