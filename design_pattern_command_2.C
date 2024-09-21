@@ -119,7 +119,15 @@ class Invoker
 
 public:
    Invoker(Command &cmd) : command_{cmd} {}
-   void setCommand(Command const &cmd) { command_ = cmd; }
+
+   void setCommand(Command const &cmd) { command_ = cmd; } // design flaw
+   /*
+   vector<Base&> v{}; won't compile
+   vector<string&> won't compile either
+   The elements of std::vector must be assignable, 
+   whereas references can’t be reassigned, but only initialised
+   One Solution: pointers
+   */
    void executeCommand() { command_.Execute(); }
 };
 #endif
