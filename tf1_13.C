@@ -17,21 +17,52 @@ Double_t aFunction(Double_t *x, Double_t *par)
 	//cout<<"--------"<<endl;
    return f;
 }
+
 void tf1_13()
 {
-   auto f1 = new TF1("aFunction",aFunction,0,10,2); // 2 == 2 parameters
-   f1->SetParameters(2,1);
-   //f1->SetParNames("constant","coefficient");
+   auto f1
+	{  // Constructor using a pointer to *a real function* instead of a *formula*.
+		new TF1
+		(
+			  "aFunction" // char const* name
+			, aFunction // Double_t(*fcn)(Double_t*, Double_t*)
+			,  0.0 // Double_t xmin = 0
+			, 10.0 // Double_t xmax = 1
+			, 2	// Int_t npar = 0
+			// Int_t ndim=1
+			// EAddToList addToGlobList=EAddToList::kDefault
+		)
+	};
+   f1->SetParameters(1,1);
+   f1->SetParNames("constant","coefficient");
    f1->Draw();
 }
+
 void tf1_13_fit()
 {
-   auto h1 = new TH1F("h1","test",100,0,10);
+	/*
+	histograms with one float per channel.
+	Maximum precision 7 digits,
+	maximum integer bin content = +/- 16 777 216 (***)
+	*/
+	// TH1F (char const *name, char const *title, Int_t nbinsx, Double_t xlow, Double_t xup)
+   auto h1
+	{
+		new TH1F
+		(
+			  "h1" // char const* name
+			, "test" // char const* title
+			, 100 	// Int_t nbinsx
+			,   0.0 // Double_t xmin
+			,  10.0// Double_t  xmax
+		)
+	} ;
    h1->FillRandom("aFunction",20000);
    TF1 *f1 = (TF1 *)gROOT->GetFunction("aFunction");
    f1->SetParameters(800,1);
    h1->Fit("aFunction");
 }
+
 /*
 In an interactive session you can do:
 Root > .L tf1_13.C

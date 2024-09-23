@@ -7,7 +7,7 @@ void tf1_03 ()
    {  new TF1
       (
            "f03"// name
-         , "- ( [0] * pow( x, [1] ) )" // formula with parameters [1],[2]
+         , "- ( [0] * pow( x, [1] ) )" // formula with parameters [0],[1]
          , -10 // xmin
          ,  10 // xmax
       )

@@ -19,20 +19,20 @@ void tf1_04()
 }
 /*
 
-gaus(0) is a substitute for [0] * exp(-0.5 * ( ( x - [1] ) / [2] ) ** 2)
-and (0) means start numbering parameters at 0
+gaus(0)   is a substitute for [0] * exp( -0.5 * ( ( x - [1] ) / [2] ) ** 2)
+and (0)   means start numbering parameters at 0
 
-gausn(0) is a substitute for [0] * exp( -0.5 * ((x-[1])/[2])**2)/(sqrt(2*pi)*[2]))
-and  (0) means start numbering parameters at 0
+gausn(0)  is a substitute for [0] * exp( -0.5 * ( ( x - [1] ) / [2] ) ** 2) / ( sqrt(2*pi) * [2]))
+and  (0)  means start numbering parameters at 0
 
-expo(3) is a substitute for exp( [3] + [4] * x)
+expo(3)   is a substitute for exp( [3] + [4] * x)
 
-pol3(5) is a substitute for par[5] * x**0 + par[6] * x**1 + par[7] * x**2 + par[8] * x**3
+pol3(5)   is a substitute for par[5] * x**0 + par[6] * x**1 + par[7] * x**2 + par[8] * x**3
    PolN stands for Polynomial of degree N
 
 gaus(x, [0..2]) is a more explicit way of writing gaus(0)
 
-expo(y, [3..4]) is a substitute for exp([3]+[4]*y)
+expo(y, [3..4]) is a substitute for exp( [3] + [4] * y)
 
 */
 

@@ -1,4 +1,6 @@
 // TF1, TFormular, a Functor, a Function Object
+// 5 - A general C++ function object (functor) with parameters
+//
 
 class AFunctionObject
 {

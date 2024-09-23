@@ -136,15 +136,31 @@ int design_pattern_command_3() // ROOT macro
 // int main(int argc, char const *argv[]) // c++ compiler
 {
    /* ref version w/o pointers */
-   Receiver receiver1{"Launch Rocket"};
+	cout<<"------------------------"<<endl;
+   Receiver receiver1{"Extract"};
    ConcreteCommand concreteCommand{receiver1};
    Invoker invoker{concreteCommand}; // ctor; arg == ref cmd
    invoker.executeCommand();
 
-   Receiver receiver2{"Land Rocket"}; // another pay-load
+   Receiver receiver2{"Transform"}; // another pay-load
    ConcreteCommand concreteCommand2{receiver2};
    invoker.setCommand(concreteCommand2); // method; arg == ref cmd
    invoker.executeCommand();
+
+   Receiver receiver3{"Load"}; // another pay-load
+   ConcreteCommand concreteCommand3{receiver3};
+   invoker.setCommand(concreteCommand3); // method; arg == ref cmd
+   invoker.executeCommand();
+
+
+	// A container of Commands 
+	cout<<"------------------------"<<endl;
+	vector<reference_wrapper<Command>> v1{};
+	v1.push_back(concreteCommand);
+	v1.push_back(concreteCommand2);
+	v1.push_back(concreteCommand3);
+	for(auto i:v1)
+		i.get().Execute();
 
    return 0;
 }

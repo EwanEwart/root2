@@ -1,27 +1,41 @@
 // TF1, TFormula, Lambda
+//
 
-auto aLambda { [](double x){return x+cos(x);} };
-// auto aLambda = [](double x){return x+cos(x);};
+auto aLambda_12 { [](double x){return x+cos(x);} };
+// auto aLambda_12 = [](double x){return x+cos(x);};
 
 void tf1_12()
 {
-	// lambda directly as / in formula doesn't work
-	//
-   // auto f12 = new TF1("f12","[&](double  x){return x+cos(x);}",-3,5,1);
-   // auto f12 = new TF1("f12","[](float f, int i){return i*f;};",-3,5,2);
-   // auto f12 { new TF1("f12","[](double x){return x+cos(x);}",-3,5,1)};
-
-	// a predeclared lambda as / in formula does work
-	//
-   // auto f12 { new TF1("f12","aLambda(x)",-3,5)}; // does work
-   // auto f12 = new TF1("f12","aLambda(x)",-3,5); // alternative: does work
-   // auto f12 { new TF1("f12",[](double x){return x+cos(x);},-3,5,1)}; // doesn't work
+   auto f12_lambda { new TF1("f12","aLambda_12(x)",-3,5)}; // does work
+   // auto f12_lambda { new TF1("f12","[0] * aLambda_12([1] + x)",-3,5)}; // does work
+   // auto f12_lambda = new TF1("f12","aLambda_12(x)",-3,5); // alternative: does work
+   // auto f12_lambda { new TF1("f12",[](double x){return x+cos(x);},-3,5,1)}; // doesn't work
 
 	// parameters
-	auto f12 { new TF1("f12","[0]*sin(x) + [1]*cos(x)",0,M_PI)};
-	f12->SetParameters(-1.0,2.0);
+	auto f12
+	{
+		new TF1
+		(
+			  "f12" // name
+			, "[0]*sin(x) + [1]*cos(x)" // formula with two parameters indexed [1..2]
+			, 0 // xmin
+			, M_PI // xmax
+		)
+	};
 
+	f12->SetParameters(-1.0, 2.0);
+	f12_lambda->SetParameters(-1,1/2);
+
+
+#define LAMBDA
+
+#if defined LAMBDA
+	f12_lambda->Draw();
+#else
    f12->Draw();
+#endif
+
+	return;
 }  
 
 /*
