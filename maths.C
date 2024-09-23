@@ -25,3 +25,8 @@ void maths()
    cout<<"fahrenheit_to_centigrade(double fahrenheit)"<<endl;
    cout<<"centigrade_to_fahrenheit(double centigrade)"<<endl;
 }
+
+auto hexadec {[](int d){stringstream s;s<<hex<<d;return s.str();}};
+
+auto decimal {[](string h){int y; stringstream{h}>>hex>>y;return y;}};
+
