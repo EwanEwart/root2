@@ -1,5 +1,6 @@
 // TF1, TFormula, parameters
-//
+// 2. Expression using variable x with parameters
+
 void tf1_09()
 {
 	auto f09
@@ -8,8 +9,8 @@ void tf1_09()
 		(
 			  "f09"// name
 			, "[0] * x * sin( [1] * x )" // formula with parameters
-			, -3
-			,  3
+			, -3.0 // xmin
+			,  3.0 // xmax
 		)
 	};
 

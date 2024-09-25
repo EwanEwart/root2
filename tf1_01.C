@@ -1,5 +1,6 @@
 // TF1, TFormula
 // F1 == formula one-dimensional
+// 1. Expression using variable x and no parameters
 void tf1_01()
 {
    auto fa1
@@ -8,8 +9,8 @@ void tf1_01()
       (
            "fa1"        // char const *   name
          , "sin(x)/x"   // char const *   formula; here no parameters
-         , 0            // Double_t       xmin = 0
-         , 10           // Double_t       xmax = 1
+         ,  0.0         // Double_t       xmin = 0
+         , 10.0         // Double_t       xmax = 1
                         // EAddToList     addToGlobList = EAddToList::kDefault
                         // bool           vectorize = false
       )

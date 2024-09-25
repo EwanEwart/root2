@@ -1,5 +1,7 @@
 // TF1, TFormula
 // F1 == formula 1 dimensional
+// 2. Expression using variable x with parameters
+
 void tf1_03 ()
 {
    
@@ -8,8 +10,8 @@ void tf1_03 ()
       (
            "f03"// name
          , "- ( [0] * pow( x, [1] ) )" // formula with parameters [0],[1]
-         , -10 // xmin
-         ,  10 // xmax
+         , -10.0 // xmin
+         ,  10.0 // xmax
       )
    };
 

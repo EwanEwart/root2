@@ -1,5 +1,7 @@
 // TF1, TFormula
 // F1 == formula 1 dimensional
+// 2. Expression using variable x with parameters
+
 void tf1_04()
 {
 	auto f04
@@ -12,11 +14,10 @@ void tf1_04()
          , 25 // xmax
       )
    };
-
 	f04->SetParameters(4,2,7,3,.1); // gaus(0) <- 3 params; expo(3) <- 2 params == 5 params
-
 	f04->Draw();
 }
+
 /*
 
 gaus(0)   is a substitute for [0] * exp( -0.5 * ( ( x - [1] ) / [2] ) ** 2)

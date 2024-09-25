@@ -1,4 +1,6 @@
 // TF1, TFormula
+// 2. Expression using variable x with parameters
+
 void tf1_05()
 {
 	auto f05
@@ -7,8 +9,8 @@ void tf1_05()
 		(
 			"f05" // name
 			,"gausn(0)*expo(3) + ypol3(5)*x" // formula with 5 parameters
-			,1	// xmin
-			,30 // xmax
+			,1.0	// xmin
+			,30.0 // xmax
 		)
 	};
 

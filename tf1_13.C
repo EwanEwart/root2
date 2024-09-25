@@ -3,10 +3,12 @@
 /*
 4 - A general C function with parameters
 
-Consider the macro tf1_13.C below:
+Consider the macro tf1_13.C
 */
 
 // Macro tf1_13.C
+
+// C-fcn of type : Double_t(*fcn)(Double_t*, Double_t*)
 Double_t aFunction(Double_t *x, Double_t *par)
 {
 	auto x0 {x[0]};
@@ -18,17 +20,18 @@ Double_t aFunction(Double_t *x, Double_t *par)
    return f;
 }
 
+// entry point
 void tf1_13()
 {
    auto f1
 	{  // Constructor using a pointer to *a real function* instead of a *formula*.
 		new TF1
 		(
-			  "aFunction" // char const* name
-			, aFunction // Double_t(*fcn)(Double_t*, Double_t*)
-			,  0.0 // Double_t xmin = 0
-			, 10.0 // Double_t xmax = 1
-			, 2	// Int_t npar = 0
+			  "aFunction"  // char const* name
+			, aFunction    // Double_t(*fcn)(Double_t*, Double_t*) (function pointer)
+			,  0.0         // Double_t xmin = 0
+			, 10.0         // Double_t xmax = 1
+			, 2	         // Int_t npar = 0
 			// Int_t ndim=1
 			// EAddToList addToGlobList=EAddToList::kDefault
 		)
@@ -69,4 +72,3 @@ Root > .L tf1_13.C
 Root > tf1_13();
 Root > tf1_13_fit();
 */
-

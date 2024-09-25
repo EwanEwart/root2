@@ -1,4 +1,6 @@
 // TFormula : [0] * sin(x) + [1] * exp(-[2] * x )
+// 2. Expression using variable x with parameters
+
 void tf1_02()
 {
 	auto f02
@@ -7,8 +9,8 @@ void tf1_02()
       (
           "f02" // name
          ,"[0] * sin(x) + [1] * exp( -[2] * x)" // three parameters: [0],[1],[2]
-         ,0 // xmin
-         ,10 // xmax
+         ,0.0  // xmin
+         ,10.0 // xmax
       )
    };
 

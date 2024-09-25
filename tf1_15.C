@@ -14,13 +14,17 @@ public:
 		return TMath::Abs( p[0] * sin(p[1] * x0) / x0 );
    }
 };
+
+// entry point
 void tf1_15()
 {
 // ....
 	int npar {2};
 	AFunctionObject fobj;
-	auto f15 { new TF1("f15",fobj,0,1,npar) };    // create TF1 class.
+   // create TF1 class using "function object"
+	auto f15 { new TF1("f15",fobj,-10.0,10.0,npar) };
 	f15->SetParameters(2.0,1.0);
+   f15->SetParNames("constant","coefficient");
 	f15->Draw();
 // .....
 }
@@ -34,4 +38,3 @@ The advantage of the function object is
 that it can have a state and reference
 
 */
-
