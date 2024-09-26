@@ -18,10 +18,12 @@ void tf1_14(int choice=-1)
 	// TF1 object fSin_plus_Sin references TF1 object "fsc" 
 	auto fSin_plus_Sin { new TF1 ("fs2", "fsc + fsc", 0., 2*M_PI) };
 
-// That is, TF1 functions may be created as the predefined ones, e.g., cosine(x)
+	// That is, TF1 functions may be created as the predefined ones, e.g., cosine(x)
 	auto cosine { new TF1 ("cosine", "cos(x)",0.,2*M_PI) };
-	auto sine { new TF1 ( "sine", "sin(x)",0.,2*M_PI) };
-   auto cosine_plus_sine {new TF1("cps","cosine(x)+sine(x)",.0,2*M_PI) };
+	auto sine   { new TF1 ( "sine",  "sin(x)",0.,2*M_PI) };
+   // auto cosine_plus_sine {new TF1("cps","cosine(x)+sine(x)",.0,2*M_PI) }; // works
+   auto cosine_plus_sine {new TF1("cps","cosine + sine",.0,2*M_PI) }; // works
+
 	switch (choice) 
    {
 		case 1: fcos->Draw(); break;
@@ -31,8 +33,7 @@ void tf1_14(int choice=-1)
 		case 5: cosine->Draw();break;
 		case 6: sine->Draw();break;
       case 7: cosine_plus_sine->Draw();break;
-		default:
-		cerr << "tf1_14( 1 | 2 ... | 7)" << endl;
+		default: cerr << "tf1_14( 1 | 2 ... | 7)" << endl; break;
 	}
 }
 

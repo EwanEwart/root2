@@ -27,11 +27,15 @@ void tf1_12(int choice = -1)
    // auto f12_lambda { new TF1("f12",[&](double* x,double *p){return p[0]+cos(x[0]); } , -3.0,5.0,1) }; // works
    // auto f12_lambda { new TF1("f12","[&](double* x,double *p){return p[0]+cos(x[0]); }",-3.0,5.0,1)}; // works
 
-   auto f1{new TF1("f1", "sin(x)", 0.0, 2 * M_PI)};
-   auto f2{new TF1("f2", "cos(x)", 0.0, 2 * M_PI)};
-   // auto fsum       { new TF1("fsum","[&](double* x,double *p){return p[0]*f1(x[0])  + p[1]*f2(x[0]); }", 0.0, 2*M_PI, 2) };
+   auto f1         { new TF1( "f1", "sin(x)", 0.0, 2 * M_PI) };
+   auto f2         { new TF1( "f2", "cos(x)", 0.0, 2 * M_PI) };
+   f1->SetParNames("f1");
+   f2->SetParNames("f2");
    // auto fsum       { new TF1("fsum", [&](double* x,double *p){return p[0]*f1(x[0])  + p[1]*f2(x[0]); },  0.0, 2*M_PI, 2) };
-   auto fsum       { new TF1("fsum", [&](double* x,double *p){return p[0]*cos(x[0]) + p[1]*sin(x[0]);},  0.0, 2*M_PI, 2) };
+   // auto fsum       { new TF1("fsum", [&](double* x,double *p){return p[0]*cos(x[0]) + p[1]*sin(x[0]);},  0.0, 2*M_PI, 2) };
+   // auto fsum       { new TF1("fsum","[&](double* x,double *p){return p[0]*cos(x[0]) + p[1]*sin(x[0]);}", 0.0, 2*M_PI, 2) };
+   // auto fsum       { new TF1("fsum","[&](double* x,double *p){return p[0]*f1(x[0])  + p[1]*f2(x[0]); }", 0.0, 2*M_PI, 2) };
+   auto fsum       { new TF1("fsum","[&](double* x,double *p){return p[0]*f1(x[0])  + p[1]*f2(x[0]); }", 0.0, 2*M_PI, 2) };
 
    switch (choice)
    {
