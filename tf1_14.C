@@ -40,7 +40,7 @@ void tf1_14(int choice=-1)
 /*
 TF1 objects can reference other TF1 objects
 of type A (?) or B (?)defined above.
-This excludes CLing or compiled functions.
+This excludes Cling or compiled functions.
 However, there is a restriction.
 A function cannot reference a basic function
 if the basic function is a polynomial polN.

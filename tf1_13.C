@@ -9,10 +9,11 @@ Consider the macro tf1_13.C
 // Macro tf1_13.C
 
 // C-fcn of type : Double_t(*fcn)(Double_t*, Double_t*)
-Double_t aFunction(Double_t *x, Double_t *par)
+// double aFunction(double *x, double *p)
+Double_t aFunction(Double_t *x, Double_t *p)
 {
 	auto x0 {x[0]};
-   Double_t f = TMath::Abs( par[0] * sin(par[1] * x0) / x0 );
+   Double_t f = TMath::Abs( p[0] * sin(p[1] * x0) / x0 );
 	//cout<<x[0]<<endl;
 	//cout<<x[1]<<endl;
 	//cout<<x[2]<<endl;
@@ -53,16 +54,25 @@ void tf1_13_fit()
 	{
 		new TH1F
 		(
-			  "h1" // char const* name
+			  "h1"   // char const* name
 			, "test" // char const* title
 			, 100 	// Int_t nbinsx
-			,   0.0 // Double_t xmin
-			,  10.0// Double_t  xmax
+			,   0.0  // Double_t xmin
+			,  10.0  // Double_t  xmax
 		)
 	} ;
-   h1->FillRandom("aFunction",20000);
-   TF1 *f1 = (TF1 *)gROOT->GetFunction("aFunction");
-   f1->SetParameters(800,1);
+
+   // Fill histogram following distribution in function fname.
+   h1->FillRandom
+   (
+      "aFunction" // fname	: Function name used for filling the histogram 
+      ,20000      // ntimes	: number of times the histogram is filled
+      // rng	: (optional) (R)andom (N)umber (G)enerator used to sample
+   );
+
+   auto f2 { (TF1 *)gROOT->GetFunction("aFunction") };
+   f2->SetParameters(800,2);
+   
    h1->Fit("aFunction");
 }
 

@@ -1,5 +1,6 @@
 // TF1, TFormula, lambda
 
+// entry point
 void tf1_16(int choice = -1)
 {
    switch (choice)
@@ -8,7 +9,7 @@ void tf1_16(int choice = -1)
    {
    	int npointx {20};
    	double xvec[npointx], yvec[npointx]; // allocate 2n doubles
-   	for (int i{};i<npointx;++i) 
+   	for (int i{}; i<npointx; ++i) 
       { // populate 2n doubles
    		xvec[i] = i*0.1;
    		yvec[i] = 10*sin(xvec[i]+0.2);
@@ -18,8 +19,30 @@ void tf1_16(int choice = -1)
 
       cout<<"type g -> "<<typeid(g).name()<<endl;
 	
-      g->SetMarkerColor(4);
-   	g->SetMarkerStyle(21);
+      /*
+         enum EColor { kWhite =0,   kBlack =1,   kGray=920,
+              kRed   =632, kGreen =416, kBlue=600, kYellow=400, kMagenta=616, kCyan=432,
+              kOrange=800, kSpring=820, kTeal=840, kAzure =860, kViolet =880, kPink=900 };
+       */
+      g->SetMarkerColor(kAzure);
+
+      /*
+      enum EMarkerStyle {kDot=1, kPlus, kStar, kCircle=4, kMultiply=5,
+                      kFullDotSmall=6, kFullDotMedium=7, kFullDotLarge=8,
+                      kFullCircle=20, kFullSquare=21, kFullTriangleUp=22,
+                      kFullTriangleDown=23, kOpenCircle=24, kOpenSquare=25,
+                      kOpenTriangleUp=26, kOpenDiamond=27, kOpenCross=28,
+                      kFullStar=29, kOpenStar=30, kOpenTriangleDown=32,
+                      kFullDiamond=33, kFullCross=34, kOpenDiamondCross=35,
+                      kOpenSquareDiagonal=36, kOpenThreeTriangles=37,
+                      kOctagonCross=38, kFullThreeTriangles=39,
+                      kOpenFourTrianglesX=40, kFullFourTrianglesX=41,
+                      kOpenDoubleDiamond=42, kFullDoubleDiamond=43,
+                      kOpenFourTrianglesPlus=44, kFullFourTrianglesPlus=45,
+                      kOpenCrossX=46, kFullCrossX=47, kFourSquaresX=48,
+                      kFourSquaresPlus=49 };
+      */
+   	g->SetMarkerStyle(kOpenStar);
 
    	g->Draw(); // fine, draws
       

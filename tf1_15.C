@@ -20,9 +20,21 @@ void tf1_15()
 {
 // ....
 	int npar {2};
+
 	AFunctionObject fobj;
+   
    // create TF1 class using "function object"
-	auto f15 { new TF1("f15",fobj,-10.0,10.0,npar) };
+	auto f15 
+   { 
+      new TF1
+      (
+           "f15"  // name
+         , fobj   // function object
+         , -10.0  // xmin
+         , 10.0   // xmax
+         , npar   // no. of parms
+      ) 
+   };
 	f15->SetParameters(2.0,1.0);
    f15->SetParNames("constant","coefficient");
 	f15->Draw();
