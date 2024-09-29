@@ -1,6 +1,13 @@
 // TF1
+// 6 - A "member function" / method with parameters of a general C++ class
+/* 
+	A TF1 can be created in this case 
+	from any member function of a class, 
+	which has the signature of (double * , double *) and returning a double.
+	double (double, double)
+*/
 
-class  MyFunction
+class Class
 {
  public:
    // ...
@@ -14,16 +21,46 @@ class  MyFunction
 			return 0;
    }
 };
+
+// entry point
 void tf1_17()
 {
    // ...
 	auto npar{1};
 
 	// create the user function class
-   MyFunction *fptr = new MyFunction();
+   Class *p { new Class() };
 
 	// create TF1 class.
-   auto f = new TF1("f",fptr,&MyFunction::Evaluate,0,1,npar,"MyFunction","Evaluate");
+	/* ctor TF1 (14/15)
+	 	template<class PtrObj , typename MemFn >
+		TF1::TF1 	
+		( 	
+			  char const *  		name
+			, PtrObj const &  	p
+			, MemFn  				memFn
+			, Double_t  			xmin
+			, Double_t  			xmax
+			, Int_t  				npar
+			, char const *  			 
+			, char const *  			 
+			, EAddToList  		addToGlobList = EAddToList::kDefault 
+		) 		
+	*/
+   auto f 
+	{ 
+		new TF1
+		(
+				"f"					// char const *	name
+			,  p						// PtrObj const& 	p			// instance / object ptr
+			,  &Class::Evaluate	// MemFn  			memFn, 	// member function / class method
+			,  -M_PI*2				// Double_t 		xmin
+			,   M_PI*2				// Double_t 		xmax
+			,  npar					// Int_t				npar
+			,  "Class"				// char const * 				// class name
+			,  "Evaluate"			// char const * 				// method name
+		) 
+	};
 	f->SetParameter(0,2.0);
 	f->Draw();
 
