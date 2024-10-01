@@ -15,7 +15,8 @@ void tf1_01()
                         // bool           vectorize = false
       )
    };
-
+   fa1->SetTitle("title : sin(x)/x;x-axis;y-axis"); // TGraph, default "Graph"
+   fa1->SetName("TF1_no_01"); // TGraph, default "Graph"
    fa1->Draw();
 }
 
