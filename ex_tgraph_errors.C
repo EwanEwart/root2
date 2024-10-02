@@ -4,9 +4,9 @@ void ex_tgraph_errors()
 	//
    auto c2 { new TCanvas{"c2","A Simple Graph with error bars",900,100,700,500 } };
    // auto c1 = new TCanvas("c1","A Simple Graph with error bars",1);
-   c2->SetFillColor(42);
+   c2->SetFillColor(42); // use TColor_01.C, colourTable() to determine index of colour, beige
    c2->SetGrid();
-   c2->GetFrame()->SetFillColor(21);
+   c2->GetFrame()->SetFillColor(21);   // refer to TColor_01.C, colourTable(), grey
    c2->GetFrame()->SetBorderSize(12);
 	
 	// data
@@ -21,9 +21,9 @@ void ex_tgraph_errors()
 	//
    auto gr = new TGraphErrors(n,x,y,ex,ey); // passing data
    gr->SetTitle("EE TGraphErrors Example");
-   gr->SetMarkerColor(4);
-   gr->SetMarkerStyle(21);
-	gr->SetLineColor(kBlue);
+   gr->SetMarkerColor(4); // use TColor_01.C, colourTable() to determine index of colour, dark blue
+   gr->SetMarkerStyle(21); // TAttMarker_01.png / TAttMarker_02.png, solid square
+	gr->SetLineColor(kBlue);  // TColor_01.C, colourWheel() to determine index of colour
    gr->Draw("ALP");
 	// A : the axis should be drawn
 	// L : draw the graph as a simple line

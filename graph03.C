@@ -1,5 +1,8 @@
-// TGraph
-// https://root.cern/doc/master/classTGraph.html
+// TGraph : A TGraph is an object made of two arrays X and Y with npoints each. 
+// https://root.cern.ch/doc/master/classTGraph.html
+// TGraphPointer : Implements all graphs' drawing's options.
+// https://root.cern.ch/doc/master/classTGraphPainter.html
+
 // Read x-y-data from file
 void graph03()
 {
@@ -13,4 +16,3 @@ void graph03()
 	// * : A Star is plotted at each point
 	// Refer to TGraphPainter
 }
-

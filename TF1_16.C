@@ -19,12 +19,7 @@ void tf1_16(int choice = -1)
 
       cout<<"type g -> "<<typeid(g).name()<<endl;
 	
-      /*
-         enum EColor { kWhite =0,   kBlack =1,   kGray=920,
-              kRed   =632, kGreen =416, kBlue=600, kYellow=400, kMagenta=616, kCyan=432,
-              kOrange=800, kSpring=820, kTeal=840, kAzure =860, kViolet =880, kPink=900 };
-       */
-      g->SetMarkerColor(kAzure);
+      g->SetMarkerColor(kAzure); // TColor_01.C, colourWheel() to determine index of colour
 
       /*
       enum EMarkerStyle {kDot=1, kPlus, kStar, kCircle=4, kMultiply=5,
@@ -42,7 +37,7 @@ void tf1_16(int choice = -1)
                       kOpenCrossX=46, kFullCrossX=47, kFourSquaresX=48,
                       kFourSquaresPlus=49 };
       */
-   	g->SetMarkerStyle(kOpenStar);
+   	g->SetMarkerStyle(kOpenStar); // TAttMarker_01.png / TAttMarker_02.png
 
    	g->Draw(); // fine, draws
       
