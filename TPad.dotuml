@@ -1,0 +1,10 @@
+ClassDiagram {
+
+   class TPad
+   
+   class TVirtualPad
+   class TAttBBox2D 
+
+   TPad -g-> TVirtualPad
+   TPad -g-> TAttBBox2D
+}

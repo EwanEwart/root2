@@ -1,0 +1,8 @@
+ClassDiagram {
+
+   class TCanvas
+   
+   class TPad
+
+   TCanvas -g-> TPad
+}

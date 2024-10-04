@@ -1,8 +1,14 @@
-// TGraph : A TGraph is an object made of two arrays X and Y with npoints each. 
+/* 
+TGraph : A TGraph is an object made of two arrays X and Y with npoints each. 
+The TGraph painting is done by TGraphPainter class. 
+The options to draw a graph are described in TGraphPainter class.
+*/
+
 // https://root.cern.ch/doc/master/classTGraph.html
 // TGraphPointer : Implements all graphs' drawing's options.
 // https://root.cern.ch/doc/master/classTGraphPainter.html
-void graph01()
+
+void TGraph_01()
 {
    int n {20};
    double x[n], y[n]; // allocate 2n doubles
