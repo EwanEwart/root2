@@ -1,0 +1,16 @@
+// The Parametric 1-D function
+ClassDiagram {
+
+   class TF1
+
+   class TNamed
+   class TAttLine
+   class TAttFill
+   class TAttMarker 
+
+   TF1 -g-> TNamed
+   TF1 -g-> TAttLine
+   TF1 -g-> TAttFill
+   TF1 -g-> TAttMarker
+   
+}

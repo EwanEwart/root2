@@ -1,0 +1,28 @@
+/*
+Generalisation and Realisation
+
+For generalisation association between two classes use 
+
+classA -g-> classB.
+
+Only same class type (class/interface/enumeration) can be generalized.
+For realization of an interface use classA -r-> interfaceB.
+Only an interface can be realized by a class. 
+*/
+ClassDiagram {
+
+   class TGraph
+
+   class TNamed
+   class TAttLine
+   class TAttFill
+   class TAttMarker
+   
+   TGraph -g-> TNamed
+   TGraph -g-> TAttLine
+   TGraph -g-> TAttFill
+   TGraph -g-> TAttMarker
+
+   class TGraphPainter
+
+}

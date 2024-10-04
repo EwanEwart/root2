@@ -1,0 +1,18 @@
+/*
+
+https://dotuml.com/documentation.html#secDiagramClass
+
+To add an attribute to a class 
+use 
+attName : type = "value" , 
+
+the [="value"] and 
+[:type] 
+are optional. 
+*/
+ClassDiagram {
+
+   class Person {
+      name:String
+   }
+}

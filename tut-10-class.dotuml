@@ -1,0 +1,24 @@
+/*
+Associations
+
+Binary association
+
+To add a    
+
+simple association   
+
+between two classes use 
+
+classA "multiplicityOfA" -- "multiplicityOfB" classB : "label", 
+
+"multiplicity" and "label" are optional. 
+
+*/
+
+ClassDiagram {
+
+   class ca
+   class cb
+   ca "1..* " -- " 0..1" cb : "  Binary association  "
+   
+}

@@ -1,0 +1,23 @@
+/*
+Navigability
+============
+
+To specify "navigability" to an "association", use 
+
+x for non navigable, or 
+< / > for navigable.
+
+This give all these combinations :
+a -- b	both ends of "association" have unspecified navigability.
+a --> b	'a' has unspecified navigability while 'b' is navigable from 'a'.
+a --x b	'b' is not navigable from 'a' while 'a' has unspecified navigability.
+a <--> b	'a' is navigable from 'b' and 'b' is navigable from A5.
+a <--x b	'b' is not navigable from 'a' while 'a' is navigable from 'b'.
+a x--x b	'a' is not navigable from 'a' and 'b' is not navigable from 'a'.
+*/
+
+ClassDiagram {
+   class ca
+   class cb
+   ca x--> cb
+}

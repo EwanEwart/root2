@@ -1,0 +1,19 @@
+/* 
+
+https://dotuml.com/documentation.html#secDiagramClass
+
+To define a empty class 
+with a simple name 
+use
+
+class name{} 
+
+or with a label use 
+
+class "label" as name / 
+class name as "label". 
+*/
+ClassDiagram 
+{
+   class Person{}
+}

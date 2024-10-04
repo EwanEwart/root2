@@ -6,28 +6,61 @@
 // Default x points
 void graph02()
 {
-   // the frequency of lottery numbers: up to 2024-10-02
+   // y : the frequency of lottery numbers: up to 2024-10-02
 	double y [] 
    {
-   //  1  2  3  4  5  6  7  8  9 10
-      0,  0, 0, 2, 1, 1, 0, 0, 1, 0,
-      2,  0, 0, 0, 0, 1, 1, 2, 0, 0,
-      0,  0, 1, 0, 0, 2, 1, 2, 0, 1,
-      0,  0, 1, 0, 0, 0, 0, 0, 0, 1,
-      1,  0, 1, 0, 0, 2, 0, 0, 0, 0
+   //         1  2  3  4  5  6  7  8  9 10
+   /*   */ 0, 0, 2, 1, 2, 4, 2, 0, 1, 2, 2, // 10
+   /* 1 */    3, 0, 0, 2, 0, 2, 1, 3, 0, 0, // 20
+   /* 2 */    1, 1, 2, 1, 2, 3, 3, 3, 0, 1, // 30
+   /* 3 */    1, 1, 2, 0, 0, 0, 0, 0, 0, 1, // 40
+   /* 4 */    1, 0, 2, 1, 1, 3, 0, 2, 1  
    };
-   double ys [] 
+   double ys []  // super no.
    {
    // 1  2  3  4  5  6  7  8  9 10
-      1, 0, 0, 0, 0, 1, 0, 0, 2, 0
+      1, 2, 0, 0, 1, 1, 0, 2, 3, 0
    };
 	size_t n {sizeof(y)/sizeof(double)}; // => n x values 1,2,3,...,n
 	auto g {new TGraph(n,y)}; // <-- n   <-- y  automatic / x coordinates: 1,2,...
 	g->SetTitle("A Graph with default x coordinates;x : auto generated values;y : static array data");
-	g->Draw();
+   
+   /* marker
+      - colour
+      - size
+      - style
+   */
+   
+   g->SetMarkerColor(kRed);
+   g->SetMarkerColor(kGreen);
+   g->SetMarkerColor(kBlue);
+   g->SetMarkerColor(kOrange+1);
+   
+   // https://root.cern.ch/doc/master/classTAttMarker.html   
+   // g->SetMarkerStyle(kPlus);
+   // g->SetMarkerStyle(23);
+   // g->SetMarkerStyle(kDot);
+   // g->SetMarkerStyle(kPlus);
+   // g->SetMarkerStyle(kStar);
+   // g->SetMarkerStyle(kCircle);
+   // g->SetMarkerStyle(kMultiply);
+   // g->SetMarkerStyle(kFullDotSmall);
+   // g->SetMarkerStyle(kFullDotMedium);
+   g->SetMarkerSize(1);
+   g->SetMarkerSize(1.5);
+   g->SetMarkerStyle(EMarkerStyle::kFullDotLarge);
+   // g->SetMarkerStyle(kFullCircle);
+   // g->SetMarkerStyle(kFullSquare);
+   // g->SetMarkerStyle(kFullTriangleDown);
+   // g->SetMarkerStyle(kFullTriangleUp);
+   // ... etc ...
+   
+   g->Draw();
 	// g->Draw("AL*"); // alternative
+	// g->Draw("AC*"); // alternative
 	// A : Produce a new plot with Axis around the graph 
 	// L : A simple polyline is drawn 
+   // C : smooth, contious
 	// * : A Star is plotted at each point
 	// Refer to TGraphPainter
 }

@@ -1,0 +1,19 @@
+/*
+
+https://dotuml.com/documentation.html#secDiagramClass
+
+Attributes and operations can be set static 
+with the key word 
+
+static 
+
+in front of declaration. 
+*/
+
+ClassDiagram {
+
+ class Maths {
+      static   public PI:double="3.14159"
+      static   public cos(angle:double):double
+   }
+}

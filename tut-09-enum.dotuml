@@ -1,0 +1,17 @@
+/*
+Enumeration
+
+Enumeration is declared within a block 
+
+enumeration name { literals...}. 
+
+*/
+ClassDiagram {
+   
+   enumeration Colour {
+      red
+      green
+      blue
+   }
+   
+}

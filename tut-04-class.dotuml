@@ -1,0 +1,20 @@
+/*
+
+https://dotuml.com/documentation.html#secDiagramClass
+
+To add visibility to attributes or operations, 
+use one of these key words : 
+
+private / public / protected / package 
+
+in front of declaration.
+*/
+ClassDiagram {
+ class Person {
+      private     name:String
+
+      protected   setName(name:String)
+      
+      public      getName():String
+   }
+}

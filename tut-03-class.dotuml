@@ -1,0 +1,23 @@
+/*
+
+https://dotuml.com/documentation.html#secDiagramClass
+
+To add an operation to a class 
+use 
+
+operationName (param:type, ...):type,
+
+the [:type] and [param] are optional.
+*/
+ClassDiagram {
+
+ class Person {
+   
+   name:String
+
+   setName(name:String) // operation setName
+
+      getName():String // operation getName
+
+   }
+}

@@ -1,0 +1,16 @@
+/*
+Interface
+
+Interface is declared within a block 
+
+interface name {}, 
+
+and use the same syntax (as class) 
+for attributes and operations. 
+
+*/
+ClassDiagram {
+   interface Comparable {
+      public compareTo(o:Object):int
+   }
+}

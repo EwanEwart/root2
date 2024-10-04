@@ -1,0 +1,27 @@
+/*
+Aggregation and Composition
+
+For Aggregation use 
+
+classA -a-> classB.
+
+For Composition use 
+
+classA -c-> classB.
+
+Multiplicity and label can be use like a basic association. 
+*/
+
+ClassDiagram {
+
+   class ca
+   class cb
+   
+   cb -a-> ca // class aggregation
+   
+   class cc
+   class cd
+   
+   cd -c-> cc // class combosition
+
+}

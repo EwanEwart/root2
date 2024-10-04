@@ -1,0 +1,17 @@
+/*
+N-ary association
+
+A N-ary association link 
+more than two classes using 
+
+classA "multiplicityOfA" -- "multiplicityOfB" classB, -- "multiplicityOfC" classC , ... : "label", 
+
+"multiplicity" and "label" are optional. 
+
+*/
+ClassDiagram {
+   class ca
+   class cb
+   class cc
+   ca -- cb, -- cc : "N-ary association"
+}

@@ -1,0 +1,14 @@
+/*
+To templatise a class, add 
+
+<template> 
+
+just after class name.
+*/
+ClassDiagram {
+
+ class Set <T> {
+      insert(T)
+      remove(T)
+   }
+}

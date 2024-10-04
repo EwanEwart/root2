@@ -1,0 +1,13 @@
+/*
+class association
+
+To add a class association use 
+
+classA "multiplicityOfA" -- "multiplicityOfB" classB with classC : "label". 
+*/
+ClassDiagram {
+   class ca
+   class cb
+   class cc
+   ca -- cb with cc : "class association"
+}
