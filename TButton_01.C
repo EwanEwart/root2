@@ -2,7 +2,7 @@ void TButton_01()
 {
 //   example of a aTDialogCanvas canvas with a few buttons
  
-   auto aTDialogCanvas { new TDialogCanvas("aTDialogCanvas","",200,300) };
+   auto aTDialogCanvas { new TDialogCanvas("aTDialogCanvas","4 x TButton",300,300) };
  
 // Create first button. Clicking on this button will execute 34+56
    auto aTButton_Add { new TButton("btn 34+56","34+56",.05,.8,.45,.88) };
