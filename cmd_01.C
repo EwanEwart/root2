@@ -1,14 +1,13 @@
 /*
+   https://trussel.ch/cpp/design%20patterns/2020/10/18/command-pattern.html
 
-https://trussel.ch/cpp/design%20patterns/2020/10/18/command-pattern.html
+   C++ Design Patterns: A Modern Command Pattern
+   This is not the Gang of Four
+   The Command Pattern solved in a different way.
+   Send commands to a possibly remote application.
+   Design : easily testable & maintainable.
 
-C++ Design Patterns: A Modern Command Pattern
-This is not the Gang of Four
-The Command Pattern solved in a different way.
-Send commands to a possibly remote application.
-Design : easily testable & maintainable.
-
-Goal: control a LightBulb
+   Goal: control a LightBulb
 */
 
 // fictitious / mock LightBulb HW class
@@ -21,6 +20,7 @@ struct LightBulb
 
    void set_brightness(unsigned value)
    {
+      brightness_ = value;
       cout
           << "LightBulb(" << name_ << ')'
           << " set brightness to value " << value
@@ -28,6 +28,9 @@ struct LightBulb
    }
    void set_colour(unsigned red = 0, unsigned green = 0, unsigned blue = 0)
    {
+      r_=red;
+      g_ =green;
+      b_ =blue;
       cout
           << "LightBulb(" << name_ << ')'
           << " set colour to RGB(" << red << ',' << green << ',' << blue << ')'
@@ -42,7 +45,12 @@ struct LightBulb
       name_ = name;
    }
 
-   string name_{""};
+   string   name_{""};
+   unsigned brightness_{0};
+   unsigned r_{0};
+   unsigned g_{0};
+   unsigned b_{0};
+
 };
 /*
 perspective sw, which controlls LightBulb

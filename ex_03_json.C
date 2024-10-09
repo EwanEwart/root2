@@ -26,7 +26,6 @@ void ex_03_json() {
    << "loaded json j = C++ initialisers "
       "for JSON arrays & objects"
    << endl;
-   // setw(4) <-- format JSON output
+   // setw(4) <-- format JSON serialisation output
    cout << setw(4) << j << endl;
 }
-
