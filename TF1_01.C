@@ -19,7 +19,10 @@ void tf1_01()
    fa1->SetName("TF1_no_01"); // TGraph, default "Graph"
    fa1->Draw();
 }
-
+void TF1_01()
+{
+   tf1_01();
+}
 /*
 F1 constructor using a formula definition.
 

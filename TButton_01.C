@@ -20,7 +20,8 @@ void TButton_01()
       new TButton
       (
          "btn 34+56" // title / name
-         , "34+56" // method / action , executed when pressed
+         // , "34+56" // method / action , executed when pressed
+         , ".x TF1_01.C"
          , .05    // x1 x bottom left  corner of pad in NDC [0..1] fXlowNDC
          , .80    // y1 y bottom left  corner of pad in NDC [0..1] fYlowNDC
          , .45    // x2 x upper  right corner of pad in NDC [0..1] fXUpNDC
@@ -29,9 +30,21 @@ void TButton_01()
    };
    aTButton_Addition->Draw();
 
-   // // Create second button. Clicking on this button will create a new canvas
-   // auto aTButton_NewCanvas{new TButton("New Canvas", "c2 = new TCanvas(\"c2\")", .55, .8, .95, .88)};
-   // aTButton_NewCanvas->Draw();
+   // Create second button. 
+   // Clicking on this button will create a new canvas
+   auto aTButton_NewCanvas
+   {
+      new TButton
+      (
+         "New Canvas"
+         , "c2 = new TCanvas(\"c2\")"
+         , .55    // left bottom 
+         , .80    // left bottom
+         , .95    // top right
+         , .88    // top right
+      )
+   };
+   aTButton_NewCanvas->Draw();
 
    // // Create third button.
    // // Clicking on this button will invoke the browser
