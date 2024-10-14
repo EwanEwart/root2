@@ -9,8 +9,8 @@ void TF1_02()
       (
           "f02" // name
          ,"[0] * sin(x) + [1] * exp( -[2] * x)" // three parameters: [0],[1],[2]
-         ,0.0  // xmin
-         ,10.0 // xmax
+         ,-2.0  // xmin
+         ,17.0 // xmax
       )
    };
 

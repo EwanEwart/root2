@@ -11,5 +11,5 @@ int counter = 0;
 
 void extreme_C_01()
 {
-   RUN_LOOP(counter, 1, 10)
+   RUN_LOOP(counter, -2, 17)
 }
