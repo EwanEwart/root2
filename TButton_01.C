@@ -20,8 +20,8 @@ void TButton_01()
       new TButton
       (
          "btn 34+56" // title / name
-         // , "34+56" // method / action , executed when pressed
-         , ".x TF1_01.C"
+         , "34+56" // method / action , executed when pressed
+         // , ".x TF1_02.C"
          , .05    // x1 x bottom left  corner of pad in NDC [0..1] fXlowNDC
          , .80    // y1 y bottom left  corner of pad in NDC [0..1] fYlowNDC
          , .45    // x2 x upper  right corner of pad in NDC [0..1] fXUpNDC
@@ -46,35 +46,22 @@ void TButton_01()
    };
    aTButton_NewCanvas->Draw();
 
-   // // Create third button.
-   // // Clicking on this button will invoke the browser
-   // auto aTButton_ObjBrowser{
-   //     /*
-   //     TButton
-   //     (
-   //          char const * title
-   //        , char const * method
-   //        , Double_t x1
-   //        , Double_t y1
-   //        , Double_t x2
-   //        , Double_t y2
-   //     )
-   //     */
-   //     new TButton(
-   //         "Invoke ROOT Object Browser" // char const * title
-   //         ,
-   //         "br = new TBrowser(\"br\")" // char const * method
-   //         ,
-   //         0.05 // Double_t x1
-   //         ,
-   //         0.54 // Double_t y1
-   //         ,
-   //         0.95 // Double_t x2
-   //         ,
-   //         0.64 // Double_t y2
-   //         )};
-   // aTButton_ObjBrowser->SetFillColor(42);
-   // aTButton_ObjBrowser->Draw();
+   // Create a third button.
+   // Clicking on this button will invoke the browser
+   auto aTButton_ObjBrowser
+   {
+       new TButton
+       (
+           "Invoke ROOT Object Browser" // char const * title
+           , "br = new TBrowser(\"br\")" // char const * method
+           , 0.05 // Double_t x1 lower left
+           , 0.54 // Double_t y1 lower left
+           , 0.95 // Double_t x2 lower right
+           , 0.64 // Double_t y2 lower right
+      )
+   };
+   aTButton_ObjBrowser->SetFillColor(42);
+   aTButton_ObjBrowser->Draw();
 
    // // Create last button with no name.
    // // Instead a graph is drawn inside the button

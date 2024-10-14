@@ -1,7 +1,7 @@
 // TFormula : [0] * sin(x) + [1] * exp(-[2] * x )
 // 2. Expression using variable x with parameters
 
-void tf1_02()
+void TF1_02()
 {
 	auto f02
    {
@@ -20,4 +20,5 @@ void tf1_02()
 
 	f02->Draw();
 }
+
 	
