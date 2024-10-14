@@ -22,12 +22,12 @@ void TButton_01()
    {
       new TButton
       (
-         "btn 34+56" // title / name
-         , "34+56" // method / action , executed when pressed
-         , .05    // x1 x bottom left  corner of pad in NDC [0..1] fXlowNDC
-         , .80    // y1 y bottom left  corner of pad in NDC [0..1] fYlowNDC
-         , .45    // x2 x upper  right corner of pad in NDC [0..1] fXUpNDC
-         , .88    // y2 y upper  right corner of pad in NDC [0..1] fYUpNDC
+           "aTButton_Addition"   // title / name
+         , "34+56"   // method / action , executed when pressed
+         , .05       // x1 x bottom left  corner of pad in NDC [0..1] fXlowNDC
+         , .80       // y1 y bottom left  corner of pad in NDC [0..1] fYlowNDC
+         , .45       // x2 x upper  right corner of pad in NDC [0..1] fXUpNDC
+         , .88       // y2 y upper  right corner of pad in NDC [0..1] fYUpNDC
       )
    };
    aTButton_Addition->Draw();
@@ -37,9 +37,8 @@ void TButton_01()
    {
       new TButton
       (
-         "btn C Extreme Macro" // title / name
+         "C Extreme Macro" // title / name
          , ".x extreme_C_01_07.C"
-         // , ".x TF1_02.C" // crash
          , .05    // x1 x bottom left  corner of pad in NDC [0..1] fXlowNDC
          , .80-dy // y1 y bottom left  corner of pad in NDC [0..1] fYlowNDC
          , .45    // x2 x upper  right corner of pad in NDC [0..1] fXUpNDC
@@ -48,7 +47,6 @@ void TButton_01()
    };
    aTButton_extreme_C_01_07->Draw();
 
-   // btn 03
    // Create second button. 
    // Clicking on this button will create a new canvas
    auto aTButton_NewCanvas
@@ -64,6 +62,22 @@ void TButton_01()
       )
    };
    aTButton_NewCanvas->Draw();
+
+   // Create second button. 
+   // Clicking on this button will create a new canvas
+   auto aTButton_TF1_02
+   {
+      new TButton
+      (
+         "TF1_02"
+         , ".x TF1_02.C" // *** crash ***
+         , .05+dx          // left bottom 
+         , .80-dy          // left bottom
+         , .45+dx          // top right
+         , .88-dy          // top right
+      )
+   };
+   aTButton_TF1_02->Draw();
 
    // btn 04
    // Create a third button.
