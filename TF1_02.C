@@ -3,6 +3,10 @@
 
 void tf1_02()
 {
+
+}
+void TF1_02()
+{
  	auto f02
    {
       new TF1
@@ -20,11 +24,6 @@ void tf1_02()
 	f02->SetParameter(2,1.5);
 
 	f02->Draw();
-
-}
-void TF1_02()
-{
-   tf1_02();
 }
 
 	
