@@ -18,7 +18,7 @@ In this example the *Unary Right Fold*,
 
 is the fold expression that expands to
 
-(1 + (2 + (3 + (4 + 5 + (6 + ( 7 + ( 8 + ( 9 + 10)))))))),
+(1 + (2 + (3 + (4 + (5 + (6 + (7 + (8 + (9 + (10)))))))))),
 
 resulting in a sum of all elements in the parameter pack.
 */
@@ -39,6 +39,18 @@ template<typename... Args>
 auto mul_unary_left_fold(Args... args)
 {
 	return (... * args);
+}
+
+template<typename... Args>
+auto min_unary_right_fold(Args... args)
+{
+	return (args - ...);
+}
+
+template<typename... Args>
+auto min_unary_left_fold(Args... args)
+{
+	return (... - args);
 }
 
 // Both a fold over operator&& using the parameter pack
@@ -68,4 +80,3 @@ void sums() {
 	for(auto i:v1)cout<<i<<' ';cout<<endl;
 	
 }
-
