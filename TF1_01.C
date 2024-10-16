@@ -1,3 +1,8 @@
+/*
+https://root.cern/manual/root_macros_and_shared_libraries/
+*/
+#include <TF1.h> // for ACLiC so creation
+
 // TF1, TFormula
 // F1 == formula one-dimensional
 // 1. Expression using variable x and no parameters

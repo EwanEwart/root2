@@ -4,7 +4,7 @@
 // a C-function
 auto aFn(double x){return x+sin(x);};
 
-void tf1_07()
+void TF1_07()
 {
 	auto f07 
 	{	
@@ -21,4 +21,3 @@ void tf1_07()
 
 	return;
 }
-

@@ -14,6 +14,6 @@ void app_01()
    f1->SetLineStyle(1);
    f1->SetLineWidth(1);
 
-   f1->Draw("c");
+   f1->Draw();
 
 }

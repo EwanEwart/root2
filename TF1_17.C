@@ -23,7 +23,7 @@ class Class
 };
 
 // entry point
-void tf1_17()
+void TF1_17()
 {
    // ...
 	auto npar{1};
@@ -78,6 +78,3 @@ which has a signature of ...
 - double(double * , double *)
 
 */
-
-
-

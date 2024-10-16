@@ -1,0 +1,54 @@
+/*
+   Macro with parameters
+   =====================
+
+   shell (quoted): 
+   -------
+
+$ root 'TF1_18.C(1)'
+   ------------------------------------------------------------------
+  | Welcome to ROOT 6.30/08                        https://root.cern |
+  | (c) 1995-2024, The ROOT Team; conception: R. Brun, F. Rademakers |
+  | Built for linuxx8664gcc on Jul 14 2024, 22:53:16                 |
+  | From tags/v6-30-08@v6-30-08                                      |
+  | With c++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0                   |
+  | Try '.help'/'.?', '.demo', '.license', '.credits', '.quit'/'.q'  |
+   ------------------------------------------------------------------
+
+root [0] 
+Processing TF1_18.C(1)...
+ac == 1 expected
+root [1] 
+
+   root (unquoted): 
+   ------
+
+root [1] .x TF1_18.C(1)
+ac == 1 expected
+root [2] 
+
+
+*/
+void args(int ac, char const* av[]) 
+{
+   for(unsigned ii{};ii<ac;++ii)
+   {
+      cout << ii << ". : " << av[ii] << endl;
+   }
+}
+void macro_01(int ac)
+{
+   if (ac==0)
+   {
+      cout << "ac == 0" << " expected" << endl;
+   }
+   else if (ac==1)
+   {
+      cout << "ac == 1" << " expected" << endl;
+   }
+   else
+   {
+      cerr << "ac == " << ac << " surprise" << endl;
+   }
+   
+}
