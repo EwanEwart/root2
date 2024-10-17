@@ -5,7 +5,7 @@ https://root.cern/manual/creating_a_user_application/
 void app_01()
 {
 
-   auto c { new TCanvas("c", "Trigonometric Functions", 0, 0, 800, 600) };
+   auto c { new TCanvas("c", "Trigonometric Functions", 400, 100, 800*2/3, 600*2/3) };
 
    auto f1 { new TF1("f1","sin(x)", -5, 5) };
 

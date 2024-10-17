@@ -1,5 +1,6 @@
+#include <iostream> // for build .so
 /*
-   Macro with parameters
+   Macro with arguments
    =====================
 
    shell (quoted): 
@@ -29,15 +30,22 @@ root [2]
 
 
 */
-void args(int ac, char const* av[]) 
+
+// simulate main: 
+// char const* arr[] {"abc","def","ghi","jkl","mno"}
+// call : args(size(arr),args)
+void args(size_t ac, char const* av[]) // two args
 {
-   for(unsigned ii{};ii<ac;++ii)
+   for(size_t ii{};ii<ac;++ii)
    {
       cout << ii << ". : " << av[ii] << endl;
    }
 }
-void macro_01(int ac)
+void macro_01(int ac) // one arg
 {
+   cout << "void macro_01(int ac) // one arg" << endl;
+   cout << "void args(int ac, char const* av[]) // two args" << endl;
+   
    if (ac==0)
    {
       cout << "ac == 0" << " expected" << endl;

@@ -11,6 +11,7 @@ void c2()
    c2->SetBorderMode(0);
    c2->SetBorderSize(2);
    c2->SetFrameBorderMode(0);
+   
    TArrow *arrow = new TArrow(0.8724928,0.1368421,0.1045845,0.88,0.05,">");
    arrow->SetFillColor(1);
    arrow->SetFillStyle(1001);

@@ -1,17 +1,46 @@
+/*
+   Executing a ROOT macro from a ROOT macro using ProcessLine
+
+   ProcessLine
+   ===========
+   process an interpreter line
+
+   Process a single command line, 
+   either a C++ statement 
+   or an interpreter command starting with a ".".
+
+Return the return value of the command cast to a long. 
+*/
 void macro_02()
 {
-   // rtn 0 : path exists
-   // rtn 1 : path doesn't exist
-   auto rtn {gSystem->AccessPathName("extreme_C_01_12.root")};
-   cout << "rtn == " << rtn << endl;
-   if (rtn)
+   // macro_exists 0 : path exists
+   // macro_exists 1 : path doesn't exist
+   auto macro_exists {!gSystem->AccessPathName("TF1_01.C")}; // if path exists
+   cout << boolalpha << "macro_exists == " << macro_exists << endl;
+   if (macro_exists)
    {
-      int errorCode = gROOT->ProcessLine(".x extreme_C_01_12.C"); // display text / TROOT::ProcessLine
-      cerr << "errorCode == " << errorCode << endl;
+      auto c { new TCanvas("c", "Trigonometric Functions", 0, 0, 800/2, 600/2) };
+      // show graph / TROOT::ProcessLine
+      Longptr_t error_code_ProcessLine = gROOT->ProcessLine(".x TF1_01.C"); 
+      cerr << "error_code_ProcessLine == " << error_code_ProcessLine << endl;
    }
-   else
+   else // if path doesn't exist
    {
-      int errorCode = gROOT->ProcessLine(".x TF1_01.C"); // show graph / TROOT::ProcessLine
-      cerr << "errorCode == " << errorCode << endl;
+      // display text / TROOT::ProcessLine
+      Longptr_t error_code_ProcessLine = gROOT->ProcessLine(".x extreme_C_01_12.C"); 
+      cerr << "error_code_ProcessLine == " << error_code_ProcessLine << endl;
    }
 }
+/*
+
+AccesPathName has a funny return code
+
+Returns FALSE if one can access a file using the specified access mode.
+
+The file name must not contain any special shell characters line ~ or $, in those cases first call ExpandPathName(). Attention, bizarre convention of return value!!
+
+Reimplemented in TXNetSystem, TDCacheSystem, TGFALSystem, TNetSystem, TWebSystem, TUnixSystem, and TWinNTSystem.
+
+Definition at line 1283 of file TSystem.cxx.
+
+*/

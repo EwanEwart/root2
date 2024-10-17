@@ -1,19 +1,22 @@
 /*
 https://root.cern/manual/root_macros_and_shared_libraries/
 
-
-root [n  ]   TF1_01.C+     // build shared library
+root [n  ].L TF1_01.C+     // build shared library
 root [n+1].L TF1_01_C.so  // load shared library
 root [n+2].x TF1_01()    // call a shared library function
 
 */
-#include <TF1.h> // + build of shared object, via ACLiC, needs required headers
+// + build of shared object, via ACLiC, needs required headers
+#include <TCanvas.h>
+#include <TF1.h> 
 
 // TF1, TFormula
 // F1 == formula one-dimensional
 // 1. Expression using variable x and no parameters
 void tf1_01()
 {
+   auto c { new TCanvas("c", "Trigonometric Functions", 0, 0, 800, 600) };
+   
    auto fa1
    {
       new TF1
