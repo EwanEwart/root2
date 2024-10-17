@@ -1,7 +1,13 @@
 /*
 https://root.cern/manual/root_macros_and_shared_libraries/
+
+
+root [n  ]   TF1_01.C+     // build shared library
+root [n+1].L TF1_01_C.so  // load shared library
+root [n+2].x TF1_01()    // call a shared library function
+
 */
-#include <TF1.h> // for ACLiC so creation
+#include <TF1.h> // + build of shared object, via ACLiC, needs required headers
 
 // TF1, TFormula
 // F1 == formula one-dimensional

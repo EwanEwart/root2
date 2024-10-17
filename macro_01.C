@@ -3,9 +3,9 @@
    =====================
 
    shell (quoted): 
-   -------
+   ---------------
 
-$ root 'TF1_18.C(1)'
+$ root 'macro_01.C(1)'
    ------------------------------------------------------------------
   | Welcome to ROOT 6.30/08                        https://root.cern |
   | (c) 1995-2024, The ROOT Team; conception: R. Brun, F. Rademakers |
@@ -16,14 +16,14 @@ $ root 'TF1_18.C(1)'
    ------------------------------------------------------------------
 
 root [0] 
-Processing TF1_18.C(1)...
+Processing macro_01.C(1)...
 ac == 1 expected
 root [1] 
 
    root (unquoted): 
-   ------
+   ---------------
 
-root [1] .x TF1_18.C(1)
+root [1] .x macro_01.C(1)
 ac == 1 expected
 root [2] 
 
