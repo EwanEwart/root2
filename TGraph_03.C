@@ -1,4 +1,6 @@
+#include<TCanvas.h>
 #include<TGraph.h>
+#include<TVector.h>
 /* 
 TGraph : A TGraph is an object made of two arrays X and Y with npoints each. 
 The TGraph painting is done by the TGraphPainter class. 
@@ -12,6 +14,9 @@ The options to draw a graph are described in TGraphPainter class.
 // Read x-y-data from file
 void TGraph_03()
 {
+   auto c {new TCanvas("c","TGraph filled from persistent file",400,200,600*3/2+50,400/2*3/2+50)};
+   c->SetGrid();
+   c->SetEditable();
 	auto g 
    {
       //  TGraph(const char *filename, const char *format="%lg %lg", Option_t *option="");
