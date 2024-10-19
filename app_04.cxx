@@ -25,6 +25,7 @@ to the ROOT system via a C++ interpreter. */
 
 #include <TCanvas.h>
 #include <TF1.h>
+#include <TVector.h>
 
 int main(int argc, char *argv[])
 {
