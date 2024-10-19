@@ -1,3 +1,14 @@
+#include<TString.h>
+#include<TFile.h>
+#include<TCanvas.h>
+#include<TF1.h>
+#include<TTree.h>
+#include<TH2F.h>
+#include<THStack.h>
+#include<TArrow.h>
+#include<TLegend.h>
+#include<TPaveText.h>
+
 void cernstaff () 
 {
    TString dir = "/media/ewan/SanDisk250GB/Red/EE/dev/root3/";

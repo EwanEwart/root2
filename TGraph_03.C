@@ -1,6 +1,7 @@
+#include<TGraph.h>
 /* 
 TGraph : A TGraph is an object made of two arrays X and Y with npoints each. 
-The TGraph painting is done by TGraphPainter class. 
+The TGraph painting is done by the TGraphPainter class. 
 The options to draw a graph are described in TGraphPainter class.
 */ 
 
@@ -22,7 +23,6 @@ void TGraph_03()
       )
    };
 	g->SetTitle("tgraph04.data;x-coord;y-coord");
-   gPad->GetCanvas()->SetGrid();
    
    g->SetMarkerStyle(kFullSquare);
    g->SetMarkerColor(kRed);
