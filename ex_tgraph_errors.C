@@ -25,8 +25,24 @@ void ex_tgraph_errors()
    gr->SetMarkerStyle(21); // TAttMarker_01.png / TAttMarker_02.png, solid square
 	gr->SetLineColor(kBlue);  // TColor_01.C, colourWheel() to determine index of colour
    gr->Draw("ALP");
-	// A : the axis should be drawn
-	// L : draw the graph as a simple line
-	// P : The current marker is plotted at each point 
-	// refer to class TGraphPainter
+	// refer to class TGraphPainter :
+   /*
+   Option 	Description
+   "A" 	   Produce a new plot with Axis around the graph
+   "I" 	   Combine with option 'A' it draws invisible axis
+   "L" 	   A simple polyline is drawn
+   "F" 	   A fill area is drawn ('CF' draw a smoothed fill area)
+   "C" 	   A smooth Curve is drawn
+   "*" 	   A Star is plotted at each point
+   "P" 	   The current marker is plotted at each point
+   "B" 	   A Bar chart is drawn
+   "1" 	   When a graph is drawn as a bar chart, this option makes the bars start from the bottom of the pad. By default they start at 0.
+   "X+" 	   The X-axis is drawn on the top side of the plot.
+   "Y+" 	   The Y-axis is drawn on the right side of the plot.
+   "PFC" 	Palette Fill Color: graph's fill color is taken in the current palette.
+   "PLC" 	Palette Line Color: graph's line color is taken in the current palette.
+   "PMC" 	Palette Marker Color: graph's marker color is taken in the current palette.
+   "RX" 	   Reverse the X axis.
+   "RY" 	   Reverse the Y axis. 
+   */
 }
