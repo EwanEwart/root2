@@ -1,6 +1,10 @@
+#include <TCanvas.h>
+#include <TGraph.h>
+#include <TGraphErrors.h>
+
 void TGraphErrors_01()
 {
-   auto c {new TCanvas("c","Demo TGraphErrors",480,640)};
+   auto c {new TCanvas("c","Demo TGraphErrors", 640*1.5,640/16, 480,600)};
    auto g{new TGraph("ExampleData.txt", "%lg %lg")};
    auto gr{new TGraphErrors("ExampleData.txt")};
 

@@ -1,7 +1,23 @@
+#include<iostream>
+using std::cout;
+using std::endl;
+
+#include<string>
+using std::string; // using directive
+
+#include<variant>
+using std::variant;
+using std::visit;
+
+// using namespace std;
+
 /*
    https://trussel.ch/cpp/design%20patterns/2020/10/18/command-pattern.html
 
    C++ Design Patterns: A Modern Command Pattern
+   C++ Design Patterns: A Modern Command Pattern
+   C++ Design Patterns: A Modern Command Pattern
+   
    This is not the Gang of Four
    The Command Pattern solved in a different way.
    Send commands to a possibly remote application.
@@ -124,7 +140,9 @@ that performs different actions
 based on the actual value of the std::variant
 
 To give a more complete example
-we will also look at the communication and serialization steps
+we will also look at 
+- the communication and 
+- serialization steps
 mentioned above.
 
 Deserialize it!
@@ -191,8 +209,56 @@ namespace cmd
 
 } // namespace cmd
 
+/*
+Communication
+=============
+As for the serialization part above, 
+there exist many possibilities 
+how to perform communication between your applications. 
+
+For the application here I chose to use 
+
+- websockets, 
+
+because they are easy to use for both 
+- local and 
+- remote communication.
+
+Here we will be using boost’s websocket implementation, 
+which is maybe a bit verbose, 
+but available for almost any decent OS.
+
+At some point we will also need some thread safe mechanisms 
+to pass the commands from 
+- the communication thread 
+- to our main thread. 
+
+For simplicity’s sake I will just use 
+- a boost::lockfree::queue, 
+because we are using boost anyway. 
+- A thread safe queue is a great way 
+to deal with communication between threads, 
+because from the point of the main thread 
+there will only be a single source of commands. 
+This makes it easier to test. 
+For unit test you can ignore the communication 
+and just fill the command queue another way.
+*/
+
+#include <boost/lockfree/queue.hpp>
+
+namespace cmd {
+
+// for convenience
+using CommandQueue = boost::lockfree::queue<cmd::Command>;
+
+} // namespace cmd
+
+
 // C-macro, entry point
-void cmd_01()
+// void cmd_01()
+int main(int argc, char const *argv[])
 {
    cout << "test bed cmd pattern loaded" << endl;
+   return 0;
 }
