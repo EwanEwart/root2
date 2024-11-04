@@ -11,46 +11,54 @@ filled in the histogram until end of file is reached.
 #include <fstream>
 #include <TH1F.h>
 
+#include <iostream>
+#include <vector>
+
+using BINS = std::vector<int>;
+
+void put_into_bin(BINS &bins, double x, double from_x, double to_x)
+{
+   auto nbinsx{bins.size()};
+   auto wbinsx{(to_x - from_x) / nbinsx}; // bin width
+   // praedicat deciding which is the right frequency bin based on the given datum 
+   auto is_in_bin{[](double min, double x, double max) { return (min <= x && x < max); }};
+   for (size_t i{}; i < nbinsx; ++i)
+      if (is_in_bin(i * wbinsx, x, (i + 1) * wbinsx))
+      {
+         bins[i] += 1;
+         break;
+      }
+}
+
 void TH1F_02()
 {
    auto title{"histogramme from file data"};
    auto nbinsx{10};
    auto xlow{0.};
    auto xup{5.};
-   auto sum{0.0};
-   auto mean{0.0};
-
-   decltype(xlow) matrix[10][11]{};
+   BINS bins(nbinsx);
 
    std::ifstream data_fs{};
    decltype(xlow) datum{};
 
    auto h{new TH1F("h", title, nbinsx, xlow, xup)};
-   
+
    data_fs.open("expo.dat"); // no. of data items: 100
-   auto idx{0};
-   while (data_fs >> datum){
-      h->Fill(datum);
-      
-      sum+=datum;
-
-      matrix[idx/10][idx%10]=datum;
-      std::cout<<idx/10<<'-'<<idx%10<<' '<<matrix[idx/10][idx%10]<<'\n';
-      idx++;
-   }
-   data_fs.close();
-   mean=sum/100.0;
-
-   for (size_t r{}; r < 10; ++r)
+   while (data_fs >> datum)
    {
-      for (size_t c{}; c<10; ++c)
-         matrix[r][10]+= matrix[r][c];
+      h->Fill(datum);
+      put_into_bin(bins, datum, xlow, xup);
    }
-   
-   for (size_t r{}; r < 10; ++r)
-      std::cout << r << ". " << ( matrix[r,9] ) <<std::endl;
 
-   std::cout<<"mean == "<<mean<<std::endl;
-   
+   data_fs.close();
+
+   // show, what's in the bins
+   for (auto n{0}; n < nbinsx; ++n)
+      std::cout << "bins[" << (n + 1) << "] = " << bins[n] << std::endl;
+
+   size_t entries_of_values_in_bins{};
+   for(auto i:bins)entries_of_values_in_bins+=i;
+   std::cout<<"Number of entries in bins == "<<entries_of_values_in_bins<<std::endl;
+
    h->Draw();
 }
