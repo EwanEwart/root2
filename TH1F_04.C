@@ -25,42 +25,58 @@ void put_into_bin(BINS &bins, double x, double from_x, double to_x)
       }
 }
 
-void TH1F_03()
+void TH1F_04()
 {
    auto nbinsx{49};
    auto xlow{1};
    auto xup{50};
    BINS bins(nbinsx);
 
-   std::ifstream data_fs_in{};
-   std::ofstream data_fs_out{};
-   unsigned short datum{};
+   int datum{};
 
-
-   data_fs_in.open("lotto.since.1955.csv");
-   data_fs_out.open("lotto.since.1955.no.only.csv");
+   #define FILE_IN_1 "lotto.since.1955.csv"
+   #define FILE_IN_2 "lotto.since.1955.2.lines.csv"
+   #define FILE_OUT "lotto.since.1955.no.only.csv"
+   // auto fp_data_in = std::fopen(FILE_IN,"r");
+   auto fp_data_in = std::fopen(FILE_IN_2,"r");
+   auto fp_data_out = std::fopen(FILE_OUT,"w");
    
-   if (data_fs_in.is_open()&&data_fs_out.is_open())
-      std::cout<<"Opened files successfully."<<std::endl;
+   if (fp_data_in)
+   {
+      std::cout<<FILE_IN_2<<" successfully."<<std::endl;
+   }
    else
-      std::cerr<<"Failure : Could not open files."<<std::endl;
+   {
+      std::cerr<<"Failure : Could not open ."<<FILE_IN_2<<std::endl;
+      return;
+   }
+   
+   if (fp_data_out)
+   {
+      std::cout<<"Opened "<<FILE_OUT <<" successfully."<<std::endl;
+   }
+   else
+   {
+      std::cerr<<"Failure : Could not open file "<<FILE_OUT<<std::endl;
+      return;
+   }
    
    unsigned short field_no{};
-   for ( size_t filed_no{}; data_fs_in >> datum; ++field_no)
+   for ( size_t filed_no{}; EOF != fscanf(fp_data_in,"%d",&datum); ++field_no)
    {
-      fscanf(data_fs_in,"",datum);
       auto const total_columns{11};
       auto column{ (field_no%total_columns) };
       if ( 2 < column && column < 9 )
       {
          put_into_bin(bins, datum, xlow, xup);
-         data_fs_out<<datum<<'\t';
+         std::fprintf(fp_data_out,"%d\t",datum);
          std::cout<<field_no%11<<'-';
       }
    }
    std::cout<<std::endl;
    
-   data_fs_in.close();
+   std::fclose(fp_data_in);
+   std::fclose(fp_data_out);
 
       // total number of entries in bins
    size_t entries_of_values_in_bins{};

@@ -80,8 +80,9 @@ void TH1F_03()
    std::cout<<std::endl;
    
    data_fs_in.close();
+   data_fs_out.close();
 
-      // total number of entries in bins
+   // total number of entries in bins
    size_t entries_of_values_in_bins{};
    for(auto i:bins)
    {
