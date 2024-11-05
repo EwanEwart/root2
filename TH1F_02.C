@@ -8,6 +8,7 @@ is read in via an input stream and
 filled in the histogram until end of file is reached.
 */
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <TH1F.h>
 
@@ -52,13 +53,30 @@ void TH1F_02()
 
    data_fs.close();
 
-   // show, what's in the bins
-   for (auto n{0}; n < nbinsx; ++n)
-      std::cout << "bins[" << (n + 1) << "] = " << bins[n] << std::endl;
-
+   // total number of entries in bins
    size_t entries_of_values_in_bins{};
-   for(auto i:bins)entries_of_values_in_bins+=i;
-   std::cout<<"Number of entries in bins == "<<entries_of_values_in_bins<<std::endl;
+   for(auto i:bins)
+   {
+      entries_of_values_in_bins+=i;
+   }
+   std::cout
+      <<"Number of entries in bins == "
+      <<entries_of_values_in_bins
+      <<std::endl;
+   
+   // console histogramme
+   auto print_console_histogramme {[](BINS const& bins,char character='-'){
+      unsigned short no{};
+      for(size_t bin_no:bins)
+      {
+         std::cout<<std::setw(4)<<++no<<": "<<std::setw(4)<<bin_no<<'|';
+         for (auto n{0};n<bin_no;++n)
+            std::cout << character;
+         std::cout<<std::endl;
+      }
+   }};
+   print_console_histogramme(bins);
 
+   // CERN histogramme
    h->Draw();
 }
