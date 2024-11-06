@@ -2,7 +2,7 @@
 #include <TF1.h>
 #include <TH1F.h> // 1-Dim histogram with one ** float ** per ** channel **
 
-void TH1F_01()
+void TH1_01()
 {
    auto xlow {0.0};
    auto xup {5.0};
