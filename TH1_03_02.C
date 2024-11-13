@@ -52,7 +52,7 @@ void put_into_bin(BINS &bins, double x, double from_x, double to_x)
    }
 }
 
-void TH1_03()
+void TH1_03_02()
 {
    auto nbinsx{49};
    auto xlow{0};
@@ -63,9 +63,9 @@ void TH1_03()
    // std::ofstream ofs_data{};
    unsigned short datum{};
 
-   auto title{"histogramme lotto 1955 ..."};
+   auto title{"uniform distribution[1,49]"};
    
-   ifs_data.open("losa_lotto.csv");
+   ifs_data.open("lotto.dat");
    // ofs_data.open("losa_lotto.nos.only.csv");
    
    if 
@@ -92,13 +92,13 @@ void TH1_03()
    {
       auto const total_columns{11};
       auto column{ (field_no%total_columns) };
-      if ( 2 < column && column < 9 )
-      {
+      // if ( 2 < column && column < 9 )
+      // {
          h->Fill(datum); // ROOT
          put_into_bin(bins, datum, xlow, xup);
          // ofs_data<<datum<<'\t';
          // std::cout<<field_no%11<<'-';
-      }
+      // }
    }
    std::cout<<std::endl;
    
@@ -114,7 +114,7 @@ void TH1_03()
       <<std::endl;
    
    // console histogramme
-   auto print_console_histogramme {[](BINS const& bins,char character='-',double scale=.1)
+   auto print_console_histogramme {[](BINS const& bins,char character='-',double scale=1)
    {
       unsigned short no{};
       for(auto bin:bins)
