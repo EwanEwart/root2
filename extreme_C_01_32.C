@@ -3,6 +3,7 @@
 
 typedef int bool_t;
 typedef bool_t (*less_than_func_t)(int, int);
+// using less_than_func_t = bool_t (*)(int, int);
 bool_t less_than(int a, int b)
 {
    return a < b ? 1 : 0;
