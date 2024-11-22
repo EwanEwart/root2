@@ -24,7 +24,7 @@ struct Point
    ColourRGB c = {222, 222, 222};
    // a type fp: a function pointer
    fp tangent{[](float x, float m = 0.5, float c = 0) { return m * x + c; }};
-   fp normal{[](float x, float m = -1.0/0.5, float d = 0) { return -m * x + c; }};
+   fp normal{[](float x, float m = -1.0/0.5, float d = 0) { return -m * x + d; }};
    
    // member function
    float square(float x){return x*x;};
@@ -69,7 +69,7 @@ void pointCloud()
    {  -7, -7, -7
       ,c1
       ,[](float x,float m,float c){return  m*x+3.1415f*c;} // custom function pointers via lambda
-      ,[](float x,float m,float c){return -1.0/m*x+3.1415f*c;} // custom function pointers via lambda
+      ,[](float x,float m,float d){return -m*x+3.1415f*d;} // custom function pointers via lambda
    };
    cout<<"p4 == "<<p4<<endl;
    cout<<"p4.normal == ";
