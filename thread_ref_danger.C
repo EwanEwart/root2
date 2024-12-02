@@ -1,8 +1,8 @@
-struct func
+struct functor
 {
 	int& i;
 
-	func(int& i_) : i( i_ ) {};
+	functor(int& i_) : i( i_ ) {};
 
 	void operator()()
 	{
@@ -37,12 +37,12 @@ public:
 void thread_ref_danger()
 {
 	cout << "joined"<<endl;
-	{int z{ 7}; thread t (func{z}); t.join()  ;if(t.joinable())cout<<"joinable"<<endl; else cout<<"not joinable anymore"<<endl;}
+	{int z{ 7}; thread t (functor{z}); t.join()  ;if(t.joinable())cout<<"joinable"<<endl; else cout<<"not joinable anymore"<<endl;}
 	cout << "detached"<<endl;
-	{int z{-1}; thread t (func{z}); t.detach();if(t.joinable())cout<<"joinable"<<endl; else cout<<"not joinable anymore"<<endl;}
+	{int z{-1}; thread t (functor{z}); t.detach();if(t.joinable())cout<<"joinable"<<endl; else cout<<"not joinable anymore"<<endl;}
 	cout<<endl;
 
 	// guard RAIA
-	{int z( 9); thread t (func{z}); thread_guard g {t}; cout<<"the thread is running"; };
+	{int z( 9); thread t (functor{z}); thread_guard g {t}; cout<<"the thread is running"; };
 	cout<<endl;
 }
