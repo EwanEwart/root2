@@ -6,7 +6,7 @@ while a thread still has access to local variables
 #include <thread>
 using namespace std;
 
-#include "listing-2.1-functor.H"
+#include "listing_2_1_functor.H"
 
 void oops()
 {
@@ -15,3 +15,8 @@ void oops()
    std::thread my_thread(my_func);
    my_thread.detach(); // <-- don't wait for thread to finish
 } // <-- new thread might still be running
+
+void listing_2_1_functor()
+{
+   oops();
+}

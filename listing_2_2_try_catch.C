@@ -9,7 +9,7 @@ not a good idea
 using namespace std;
 
 // struct func;
-#include "listing-2.1-functor.H"
+#include "listing_2_1_functor.H"
 
 void do_something_in_current_thread() { throw string{"Delibrate string exception"}; }
 
@@ -41,7 +41,7 @@ void f()
    t.join(); // <---
    
 }
-int main()
+int listing_2_2_try_catch()
 {
    try
    {

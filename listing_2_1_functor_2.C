@@ -8,6 +8,8 @@
 #include<fstream>
 using namespace std;
 
+auto output_file {"listing_2_1_functor_2.text"};
+
 struct functor
 {
    size_t& factor;
@@ -22,7 +24,7 @@ struct functor
    void operator() (size_t factor)
    {
       ofstream ofs;
-      ofs.open("listing-2.1-functor-2.text");
+      ofs.open(output_file);
       cout<<"operator factor == "<<factor<<endl;
       for(unsigned j{1};j<1000001;++j)
       {
@@ -32,7 +34,6 @@ struct functor
       ofs.close();
    }
 };
-
 void oops()
 {
    size_t factor {8};
@@ -44,4 +45,8 @@ void oops()
    // std::thread t1(f1);
    thread t1(f1,factor);
    t1.detach();// critical int& i
+}
+void listing_2_1_functor_2()
+{
+   oops();
 }
