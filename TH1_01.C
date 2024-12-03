@@ -1,4 +1,4 @@
-// Visualisation of a histogram filled with exponentially distributed, random numbers
+// Visualisation of a histogram filled with exponentially distributed,  numbers
 #include <TF1.h>
 #include <TH1F.h> // 1-Dim histogram with one ** float ** per ** channel **
 
