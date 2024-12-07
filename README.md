@@ -1,28 +1,7 @@
-# ROOT access: replace name
-$ xhost +si:localuser:<name>
+# Companion Source Code for C++ Concurrency in Action 2nd Edition
 
+This repository contains the source code from the second edition of [C++ Concurrency in Action](https://www.cplusplusconcurrencyinaction.com/), by Anthony Williams.
 
-# Unmangle C++
-+c++filt *mangled type*
+The **listings** folder contains the listings from the book. Each file is named `listing_<chapter-number>.<listing-number>.cpp`, so `listing_1.1.cpp` is the first listing in chapter 1, which is marked as listing 1.1 in the book, and `listing_10.3.cpp` is the third listing in chapter 10, which is marked as listing 10.3 in the book.
 
-# github automation
-git config --global credential.helper manager
-
-## GCM - git credential manager
-### Debian package
-#### Install GCM
-
-*Download* the latest .deb package,
-and *run* the following:
-
-sudo dpkg -i <path-to-package>
-git-credential-manager configure
-
-### Uninstall GCM
-
-git-credential-manager unconfigure
-sudo dpkg -r gcm
-
-### github automation gcm-post-installation
-git config --global credential.credentialStore cache
-
+The source code is released under the [Boost Software License](https://www.boost.org/LICENSE_1_0.txt).

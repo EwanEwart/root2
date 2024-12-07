@@ -4,6 +4,7 @@
       ".fantomasignore": "ignore",
       "*.C": "cpp",
       "array": "cpp",
-      "limits": "cpp"
+      "limits": "cpp",
+      "ostream": "cpp"
    }
 }
