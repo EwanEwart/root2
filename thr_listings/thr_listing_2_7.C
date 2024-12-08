@@ -17,7 +17,7 @@ void f()
         std::mem_fn(&std::thread::join));
 }
 
-int main()
+void thr_listing_2_7()
 {
     f();
 }

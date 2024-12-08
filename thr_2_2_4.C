@@ -4,27 +4,32 @@
 using namespace std;
 
 using widget_id = int;
-
 using widget_data = string;
 
-void update_data_for_widget(widget_id w, widget_data &data);
+// // ------------------------------------problem ref & ------v
+// void update_data_for_widget(widget_id const w, widget_data & data){}
+
+void update_data_for_widget(widget_id const w, widget_data   data)
+{
+   cerr<<"update_data_for_widget => Can't update data"<<endl;
+}
+// ------------------------------------fine----------------^
 
 void display_status(widget_id const &wid, widget_data const &wd)
 {
-   cout << "display_status: { " << wid << "," << wd << " }" << endl;
+   cout << "display_status => { " << wid << "," << wd << " }" << endl;
 }
 void process_widget_data(widget_data wd)
 {
-   cout << "process_width_data ... " << endl;
+   cout << "process_widget_data => "<<wd<< endl;
 }
-void oops_again(widget_id w)
+void oops_again(widget_id wid)
 {
-   widget_data data{"database engine no. 1"};
-   // thread t(update_data_for_widget, w, data);
-   thread t{update_data_for_widget, w, data};
-   display_status(w,data);
+   widget_data wd{"database engine no. 1"};
+   thread t{update_data_for_widget, wid, wd};
+   display_status(wid,wd);
    t.join();
-   process_widget_data(data);
+   process_widget_data(wd);
 }
 void thr_2_2_4()
 {

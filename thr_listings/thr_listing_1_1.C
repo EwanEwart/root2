@@ -3,10 +3,10 @@
 
 void hello()
 {
-    std::cout<<"Hello Concurrent World\n";
+    std::cout<<"Welcome to the Concurrent World\n";
 }
 
-int main()
+void thr_listing_1_1()
 {
     std::thread t(hello);
     t.join();

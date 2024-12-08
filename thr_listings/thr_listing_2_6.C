@@ -1,5 +1,6 @@
 #include <thread>
 #include <utility>
+#include <stdexcept>
 
 class scoped_thread
 {
@@ -44,13 +45,13 @@ void do_something_in_current_thread()
 
 void f()
 {
-    int some_local_state;
+    int some_local_state{4711};
     scoped_thread t(std::thread(func(some_local_state)));
         
     do_something_in_current_thread();
 }
 
-int main()
+void thr_listing_2_6()
 {
     f();
 }

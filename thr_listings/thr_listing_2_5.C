@@ -18,7 +18,7 @@ std::thread g()
     return t;
 }
 
-int main()
+void thr_listing_2_5()
 {
     std::thread t1=f();
     t1.join();

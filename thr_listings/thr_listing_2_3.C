@@ -74,15 +74,7 @@ void f()
     do_something_in_current_thread();
 }
 
-int main()
+int thr_listing_2_3()
 {
     f();
 }
-/*
-
-root [0] .L listings/listing_2.3.cpp 
-root [1] main()
-(int) 0
-root [2] 
-
-*/

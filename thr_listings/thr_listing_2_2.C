@@ -61,7 +61,7 @@ void f()
    t1.join();
 }
 
-int main()
+void thr_listing_2_2()
 {
    f();
 }

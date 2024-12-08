@@ -83,9 +83,7 @@ void edit_document(string const& filename)
    }
 }
 
-int main()
+void thr_listing_2_4()
 {
    edit_document("bar.doc");
-
-   return 0;
 }

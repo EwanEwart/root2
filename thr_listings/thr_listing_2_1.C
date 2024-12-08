@@ -74,7 +74,7 @@ void oops()
 #endif
 } // new thread might still be running
 
-int main()
+void thr_listing_2_1()
 {
    oops();
    // int int_local_state{}; : <<<--- out of oop() scope --->>> segmentation violation
