@@ -1,21 +1,25 @@
 #include <iostream>
 #include <thread>
 #include <string>
+#include <functional>
 using namespace std;
 
 using widget_id = int;
 using widget_data = string;
 
 // // ------------------------------------problem ref & ------v
-// void update_data_for_widget(widget_id const w, widget_data & data){}
-
-void update_data_for_widget(widget_id const w, widget_data   data)
+void update_data_for_widget(widget_id const w, widget_data & data)
 {
-   cerr<<"update_data_for_widget => Can't update data"<<endl;
+   string tmp{"{ "};
+   tmp+=to_string(w);
+   tmp+=",";
+   tmp+="commenucation server no. 3";
+   tmp+=" }";
+   data=tmp;
 }
-// ------------------------------------fine----------------^
 
-void display_status(widget_id const &wid, widget_data const &wd)
+// ref -----------------------------------------------------v
+void display_status(widget_id const &wid, widget_data const & wd)
 {
    cout << "display_status => { " << wid << "," << wd << " }" << endl;
 }
@@ -26,7 +30,9 @@ void process_widget_data(widget_data wd)
 void oops_again(widget_id wid)
 {
    widget_data wd{"database engine no. 1"};
-   thread t{update_data_for_widget, wid, wd};
+   ///////////////////////////////////////////////
+   thread t{update_data_for_widget, wid, ref(wd)}; // std::ref
+   ///////////////////////////////////////////////
    display_status(wid,wd);
    t.join();
    process_widget_data(wd);
