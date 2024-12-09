@@ -19,13 +19,14 @@ void guess_the_number()
    cout << ">> Enter min ... ";
    string str_min;
    cin >> str_min;
-   auto min{atoi(str_min.c_str())};
+   int min; int max;
+   if (str_min.empty()) { cout<<endl;return; } else { auto min{atoi(str_min.c_str())};}
 
    // max
    cout << ">> Enter max ... ";
    string str_max;
    cin >> str_max;
-   auto max{atoi(str_max.c_str())};
+   if (str_max.empty()) { cout<<endl;return; } else { auto max{atoi(str_max.c_str())};}
 
    auto carry_on{true};
    for (; carry_on;)
@@ -37,14 +38,8 @@ void guess_the_number()
          string str_guess;
          cout << ">> Guess the number: ... ";
          cin >> str_guess;
+         if (str_guess.empty()) { cout << endl; carry_on = false; break; }
          auto guess{atoi(str_guess.c_str())};
-
-         if (str_guess.empty())
-         {
-            cout << endl;
-            carry_on = false;
-            break;
-         }
 
          cout << ">> Your guess: " << guess << endl;
          if (guess == rn)
