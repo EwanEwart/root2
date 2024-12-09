@@ -1,7 +1,10 @@
-// what it does for page length 15, jobs 80:
+// how many pages to view, 15 jobs per page, no. of jobs 80:
 // cout<<80/15<<" "<<80%15<<endl;
 
-auto no_of_pages_and_jobs
+#include <iostream>
+using namespace std;
+
+auto no_of_pages_to_view
 {
    [](int no_of_jobs, int jobs_per_page=15)
    {
@@ -20,7 +23,7 @@ auto no_of_pages_and_jobs
 
 void maths()
 {
-   cout<<"no_of_pages_and_jobs(int no_of_jobs, int jobs_per_page=15)"<<endl;
+   cout<<"no_of_pages_to_view(int no_of_jobs, int jobs_per_page=15)"<<endl;
    cout<<"fahrenheit_to_centigrade(double fahrenheit)"<<endl;
    cout<<"centigrade_to_fahrenheit(double centigrade)"<<endl;
 }
@@ -30,4 +33,3 @@ auto centigrade_to_fahrenheit(double c) { return c*9/5+32; }
 
 auto hexadec {[](int d){stringstream s;s<<hex<<d;return s.str();}};
 auto decimal {[](string h){int y; stringstream{h}>>hex>>y;return y;}};
-

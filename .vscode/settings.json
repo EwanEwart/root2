@@ -5,6 +5,7 @@
       "*.C": "cpp",
       "array": "cpp",
       "limits": "cpp",
-      "ostream": "cpp"
+      "ostream": "cpp",
+      "cstddef": "cpp"
    }
 }
