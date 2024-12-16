@@ -60,7 +60,7 @@ struct Fo
    }
 };
 
-void oops()
+void thr_lst_02_01() // oops
 {
    int factor = 2; // possibly dangling reference
 
@@ -80,7 +80,7 @@ void oops()
 // int main(int argc, char const *argv[])
 int main() // thread started by the C++ runtime
 {
-   oops();
+   thr_lst_02_01(); // oops
 
    return 0;
 }

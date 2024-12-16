@@ -12,18 +12,16 @@ void f(int i, string const &s)
    std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >
    */
    cout << typeid(s).name() << endl;
-   
-   
-   string const& sr =s ;
-   cout << typeid(sr).name() << endl;
 
+   string const &sr = s;
+   cout << typeid(sr).name() << endl;
 }
 void thr_2_2_1()
 {
-   auto t1{thread(f, 10, /* char const * */"abc")};
+   auto t1{thread(f, 10, /* char const * */ "abc")};
    if (t1.joinable())
    {
       t1.join();
-      cout << "joined f"<<endl;
+      cout << "joined f" << endl;
    }
 }

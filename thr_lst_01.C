@@ -9,28 +9,47 @@ void the_message_thread()
 {
    cout
        << '\n'
-       << "2. The Message Thread."
+       << "2. the_message_thread"
        << '\n'
-       << endl;
+       << endl
+       ;
 }
-void threads_01() // thread started by the C++ runtime
+void thr_lst_01() // thread started by the C++ runtime
 {
    cout << '\n' << endl;
 
-   cout << "1. The Main Thread." << endl;
+   cout << "1. The Main Thread starts the_message_thread." << endl;
 
-   thread t(the_message_thread);
+   thread t02(the_message_thread);
 
-   t.join();
+   // join
+   //
+   // t02.join();
+   /*
+   root [0] .x thr_lst_01.C
+   1. The Main Thread starts the_message_thread.
+   2. the_message_thread
+   3. The main Thread.
+   */
+   // detach
+   //
+   t02.detach();
+   /*
+   root [1] .x thr_lst_01.C
+   1. The Main Thread starts the_message_thread.
+   3. The main Thread.
+   2. the_message_thread
+   */
 
-   cout << "3. The Main Thread." << endl;
+   cout << "3. The main Thread." << endl;
 
    cout << '\n' << endl;
 }
+
 // int main ( int ac, char const * av [], char const * ev [] )
 int main()
 {
-   threads_01();
+   thr_lst_01();
 
    return 0;
 }

@@ -4,6 +4,7 @@
 #include <functional>
 #include <vector>
 #include <iostream>
+using namespace std;
 
 template <typename Iterator, typename T>
 struct accumulate_block
