@@ -1,5 +1,12 @@
+#include<TApplication.h>
+#include<TCanvas.h>
+#include<TGraph.h>
+#include<TMath.h>
+
 /* 
-TGraph : A TGraph is an object made of two arrays X and Y with npoints each. 
+TGraph
+======
+A TGraph is an object made of two arrays X and Y with npoints each. 
 The TGraph painting is done by TGraphPainter class. 
 The options to draw a graph are described in TGraphPainter class.
 */
@@ -10,7 +17,7 @@ The options to draw a graph are described in TGraphPainter class.
 
 void TGraph_01()
 {
-   int n {20};
+   int const n {20};
    double x[n], y[n]; // allocate 2n doubles
    
    for (int i{};i<n;++i) // populate 2n doubles
@@ -18,6 +25,7 @@ void TGraph_01()
      x[i] = i*0.1;
      y[i] = 10*sin(x[i]+0.2);
    }
+   auto c1 {new TCanvas()};
    auto g {new TGraph(n,x,y)};
    
    // default title "Graph" / Observe the structured string!
@@ -27,8 +35,9 @@ void TGraph_01()
    g->SetName("GraphNoOne");
 
    // g->Draw("AC*");
-   g->Draw("AL*");
-	// refer to class TGraphPainter :
+   g->Draw("AC*");
+	// refer to class TGraphPainter : https://root.cern/doc/master/classTGraphPainter.html
+   // refer to doc_Draw.md
    /*
    Option 	Description
    "A" 	   Produce a new plot with Axis around the graph
@@ -47,4 +56,5 @@ void TGraph_01()
    "PMC" 	Palette Marker Color: graph's marker color is taken in the current palette.
    "RX" 	   Reverse the X axis.
    "RY" 	   Reverse the Y axis. 
+   */
 }

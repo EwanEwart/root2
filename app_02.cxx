@@ -1,33 +1,60 @@
-#include "TCanvas.h"
-#include "TF1.h"
-
 /*
 https://root.cern/manual/creating_a_user_application/
+
+Batch example generating a PDF file
+===================================
+
+A C++ standalone application must contain the main() function, 
+the starting point for the application execution.
+
+The first lines of the C++ file include ROOT header files. 
+The names of the ROOT header files are almost always the same 
+as the class names (here TF1 and TCanvas).
+
+Linux :
+------
+g++ app_02.C $(root-config --glibs --cflags --libs) -o app_02
+
+Windows :
+--------
+cl -nologo -MD -GR -EHsc demo1.cxx -I %ROOTSYS%\include /link -LIBPATH:%ROOTSYS%\lib libCore.lib libGpad.lib libHist.lib
+
+
+
+Note
+----
+You can use root-config --cflags 
+to be sure to use the correct compiler flags (Debug vs Release)
+
+The following message is displayed:
+
+Info in <TCanvas::Print>: pdf file app_02.pdf has been created
+
+The app_02.pdf file is saved in the current working directory. 
+The pdf file contains the plot of the f1 function
 */
 
-int main(int argc, char const *argv[])
+#include <TCanvas.h>
+#include <TF1.h>
+
+int main(int argc, char **argv)
 {
+    auto *c = new TCanvas("c", "EE: standalone ROOT application", 0, 0, 800, 600);
 
-   auto c { new TCanvas("c", "Trigonometric Functions", 0, 0, 800, 600) };
+    auto *f1 = new TF1("f1", "sin(x)/x", -10, 10);
+    f1->SetLineColor(kBlue + 1);
+    f1->SetTitle("sin(x)/x;x-axis;y-axis"); // title / lable x-axis / lable y-axis
+    f1->Draw();
 
-   auto f1 { new TF1("f1","sin(x)", -5, 5) };
+    c->Print("app_02.C_generated.pdf");
+    c->SaveAs("app_02.C_generated.svg","svg");
+    c->SaveAs("app_02.C_generated.png","png");
+    c->SaveAs("app_02.C_generated.gif","gif");
+    c->SaveAs("app_02.C_generated.jpg","jpg");
 
-   f1->SetTitle("f(x)=sin(x);x; sin(x)");
-   f1->SetLineColor(kRed+1);
-   f1->SetLineStyle(1);
-   f1->SetLineWidth(1);
-
-   f1->Draw();
-
-   c->Print("app_02.pdf");
-
-   // sudo apt install libpcre3-dev on Ubuntu 24.10
-
-   // g++ app_02.cxx $(root-config --glibs --cflags --libs) -o app_02
-   // $ ./app_02 
-   // display app_02.pdf
-
+    return 0;
 }
+
 /*
 $ apt show libpcre3-dev
 Package: libpcre3-dev

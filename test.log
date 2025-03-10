@@ -1,0 +1,14 @@
+[0mroot [19] ln.Dump([D[0m[38;5;83m[1m()[D[D[0m();
+[0m==> Dumping object at: 0x00007e6b0132e000, name=TLine, class=TLine
+
+fX1                           10                  X of 1st point
+fY1                           11                  Y of 1st point
+fX2                           0                   X of 2nd point
+fY2                           0                   Y of 2nd point
+fUniqueID                     0                   object unique identifier
+fBits                         0x02000000          bit field status word
+fLineColor                    1                   Line color
+fLineStyle                    1                   Line style
+fLineWidth                    1                   Line width
+[0mroot [20] .>
+[0m

@@ -1,3 +1,7 @@
+#include<TRootApplication.h>
+#include<TCanvas.h>
+#include<TColorWheel.h>
+
 /*
 TColor
 
@@ -18,7 +22,7 @@ The following image displays the 50 basic colours.
 */
 auto colourTable()
 {
-   auto c = new TCanvas("c","Fill Area colours",0,0,500,200);
+   auto c = new TCanvas("c","50 basic fill-area colours",100,100,500,200);
    c->DrawColorTable();
    return c;
 }
@@ -33,7 +37,7 @@ The wheel contains the recommended 216 colours to be used in web applications.
 auto colourWheel()
 {
    auto w  = new TColorWheel();
-   auto cw = new TCanvas("cw","cw",0,0,400,400);
+   auto cw = new TCanvas("cw","216 web colours",800,100,400,400);
    w->SetCanvas(cw);
    w->Draw();
 }
@@ -41,4 +45,5 @@ auto colourWheel()
 void TColor_01()
 {
    colourTable();
+   colourWheel();
 }

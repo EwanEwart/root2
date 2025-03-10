@@ -12,7 +12,7 @@ these functions will be called automatically
 using json = nlohmann::json;
 
 // some UDF
-struct person
+struct person 
 {
    string name;
    unsigned age;

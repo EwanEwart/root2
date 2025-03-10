@@ -42,6 +42,8 @@ void TGraph_03()
 	// g->Draw("AL*"); // alternative
 	// refer to class TGraphPainter :
    /*
+	// refer to class TGraphPainter : https://root.cern/doc/master/classTGraphPainter.html
+   // refer to doc_Draw.md
    Option 	Description
    "A" 	   Produce a new plot with Axis around the graph
    "I" 	   Combine with option 'A' it draws invisible axis
@@ -59,5 +61,5 @@ void TGraph_03()
    "PMC" 	Palette Marker Color: graph's marker color is taken in the current palette.
    "RX" 	   Reverse the X axis.
    "RY" 	   Reverse the Y axis. 
-   
+   */   
 }

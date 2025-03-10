@@ -1,3 +1,6 @@
+#include<TApplication.h>
+#include<TCanvas.h>
+#include<TGraph.h>
 /*
 TGraph : A TGraph is an object made of two arrays X and Y with npoints each. 
 The TGraph painting is done by TGraphPainter class. 
@@ -125,6 +128,8 @@ TCanvas::TCanvas
 	// g->Draw("AC*"); // alternative
 	// refer to class TGraphPainter :
    /*
+	// refer to class TGraphPainter : https://root.cern/doc/master/classTGraphPainter.html
+   // refer to doc_Draw.md
    Option 	Description
    "A" 	   Produce a new plot with Axis around the graph
    "I" 	   Combine with option 'A' it draws invisible axis
@@ -148,5 +153,5 @@ TCanvas::TCanvas
    c1->GetFrame()->SetFillColor(kOrange-8); // use TColor_01.C, colourTable() to determine index of colour
    c1->GetFrame()->SetBorderSize(2);
    c1->Modified();
-
+   */
 }

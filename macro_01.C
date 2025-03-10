@@ -1,9 +1,13 @@
 #include <iostream> // for build .so
+using std::cerr;
+using std::cout;
+using std::endl;
+
 /*
    Macro with arguments
    =====================
 
-   shell (quoted): 
+   shell (quoted):
    ---------------
 
 $ root 'macro_01.C(1)'
@@ -16,47 +20,68 @@ $ root 'macro_01.C(1)'
   | Try '.help'/'.?', '.demo', '.license', '.credits', '.quit'/'.q'  |
    ------------------------------------------------------------------
 
-root [0] 
+root [0]
 Processing macro_01.C(1)...
 ac == 1 expected
-root [1] 
+root [1]
 
-   root (unquoted): 
+   root (unquoted):
    ---------------
 
 root [1] .x macro_01.C(1)
 ac == 1 expected
-root [2] 
+root [2]
 
 
 */
 
-// simulate main: 
+// simulate main:
 // char const* arr[] {"abc","def","ghi","jkl","mno"}
 // call : args(size(arr),args)
-void args(size_t ac, char const* av[]) // two args
+void args(size_t const ac, char const *av[]) // two args
 {
-   for(size_t ii{};ii<ac;++ii)
+   for (size_t ii{}; ii < ac; ++ii)
    {
-      cout << ii << ". : " << av[ii] << endl;
+      cout << ii + 1 << ". : " << av[ii] << endl;
    }
 }
-void macro_01(int ac) // one arg
+// treat no int passed
+void macro_01()
 {
-   cout << "void macro_01(int ac) // one arg" << endl;
+   cout << "macro_01 has to be invoked with an int, not no arg: macro_01(int i)" << endl;
+}
+// treat no int passed
+void macro_01(float f)
+{
+   cout << "macro_01 has to be invoked with an int, not float: macro_01(int i)" << endl;
+}
+// treat no int passed
+void macro_01(double f)
+{
+   cout << "macro_01 has to be invoked with an int, not double: macro_01(int i)" << endl;
+}
+// treat no int passed
+void macro_01(char c)
+{
+   cout << "macro_01 has to be invoked with an int, not char: macro_01(int i)" << endl;
+}
+
+// an int is expected to be passed
+void macro_01(int integer)
+{
+   cout << "void macro_01(int integer) // one arg" << endl;
    cout << "void args(int ac, char const* av[]) // two args" << endl;
-   
-   if (ac==0)
+
+   if (integer == 0)
    {
-      cout << "ac == 0" << " expected" << endl;
+      cout << "integer == 0" << " expected" << endl;
    }
-   else if (ac==1)
+   else if (integer == 1)
    {
-      cout << "ac == 1" << " expected" << endl;
+      cout << "integer == 1" << " expected" << endl;
    }
    else
    {
-      cerr << "ac == " << ac << " surprise" << endl;
+      cerr << "integer == " << integer << " surprise" << endl;
    }
-   
 }

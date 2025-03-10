@@ -1,3 +1,7 @@
+#include<TApplication.h> // EE++
+#include<TROOT.h> // EE++
+#include<TDirectory.h>
+#include<TSystem.h> // EE++
 #include<TString.h>
 #include<TFile.h>
 #include<TCanvas.h>
@@ -17,6 +21,9 @@ void cernstaff ()
    // dir.Append("/tree/cernstaff.C");
    if (gSystem->AccessPathName("cernstaff.root")) 
    {
+      // auto gr {GetROOT()}; // EE++ ur for code input, then change to gROOT singleton
+      // gr->SetMacroPath(dir);
+      // gr->ProcessLine(".x cernbuild.C");
       gROOT->SetMacroPath(dir);
       gROOT->ProcessLine(".x cernbuild.C");
    }
@@ -27,7 +34,8 @@ void cernstaff ()
    // make table of number of people per Nation & Division
    c1->cd(1); gPad->SetGrid();
    T->Draw("Nation:Division>>hN","","text");
-   TH2F *hN = (TH2F*)gDirectory->Get("hN");
+   TH2F *hN = static_cast<TH2F*>(gDirectory->Get("hN"));
+   // TH2F *hN = (TH2F*)(Internal::TDirectoryAtomicAdapter{})->Get("hN"); // EE
    hN->SetMarkerSize(1.6);
    hN->SetStats(0);
  
@@ -35,7 +43,7 @@ void cernstaff ()
    c1->cd(2); gPad->SetGrid();
    gPad->SetLeftMargin(0.12);
    T->Draw("Cost:Nation>>hNation","","prof,goff");
-   TH1F *hNation = (TH1F*)gDirectory->Get("hNation");
+   TH1F *hNation = static_cast<TH1F*>(gDirectory->Get("hNation"));
    hNation->SetTitle("Average Cost per Nation");
    hNation->LabelsOption(">"); //sort by decreasing bin contents
    hNation->SetMaximum(13000);
@@ -80,7 +88,7 @@ void cernstaff ()
    c1->cd(4); gPad->SetGrid();
    T->Draw("Age");
    T->Draw("Age>>hRetired","Age>(65-2002+1988)","same");
-   TH1F *hRetired = (TH1F*)gDirectory->Get("hRetired");
+   TH1F *hRetired = static_cast<TH1F*>(gDirectory->Get("hRetired"));
    hRetired->SetFillColor(kRed);
    hRetired->SetFillStyle(3010);
  
